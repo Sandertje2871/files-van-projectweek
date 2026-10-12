@@ -1,4 +1,3 @@
-
 const flag = document.getElementById('flag');
 const button1 = document.getElementById('button1');
 const button2 = document.getElementById('button2');
@@ -146,3 +145,6 @@ const vragen = [
     { flag: "Herzegovina", options: ["Servië", "Bosnië", "Kroatië", "Montenegro"], answer: "Herzegovina" }
 ];
  
+let currentQuestion = 0;
+let score = 0;
+let checks = ""
