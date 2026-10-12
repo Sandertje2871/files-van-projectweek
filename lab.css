@@ -16,3 +16,18 @@
     text-align: center;
     width: 100%;
 }
+.img2 {
+    display: block;
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    margin: 50px auto;
+}
+.choice2 {
+  padding: 20px 20px;
+  margin: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: pink;
+}
+ 
