@@ -61,7 +61,10 @@ for (let i = 0; i < knoppen.length; i++) {
     checkresultaat.textContent = "";
     scoreresultaat.textContent = "Score: " + score + " / " + currentQuestion;
     volgendevraag.style.display = "none";
+}
 
 
-
+function checkAnswer(gekozenKnop) {
+    if (beantwoord) return;
+    beantwoord = true;
 }
