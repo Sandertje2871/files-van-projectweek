@@ -1,3 +1,9 @@
+h1 {
+  text-align: center;
+  width: 100%;
+background-color: pink;
+}
+
 .img1 {
     display: block;
     width: 500px;
