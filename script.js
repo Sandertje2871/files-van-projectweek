@@ -58,7 +58,9 @@ for (let i = 0; i < knoppen.length; i++) {
         knoppen[i].className = "";
     }
 
-    
+    checkresultaat.textContent = "";
+    scoreresultaat.textContent = "Score: " + score + " / " + currentQuestion;
+    volgendevraag.style.display = "none";
 
 
 
