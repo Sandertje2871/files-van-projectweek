@@ -1,240 +1,238 @@
-    const flag = document.getElementById('flag');
-    const choice1 = document.getElementById('choice1');
-    const choice2 = document.getElementById('choice2');
-    const choice3 = document.getElementById('choice3');
-    const choice4 = document.getElementById('choice4');
-    const choice5 = document.getElementById('choice5');
-    const choice6 = document.getElementById('choice6');
-    const choice7 = document.getElementById('choice7');
-    const choice8 = document.getElementById('choice8');
-    const choice9 = document.getElementById('choice9');
-    const choice10 = document.getElementById('choice10');
-    const choice11 = document.getElementById('choice11');
-    const choice12 = document.getElementById('choice12');
-    const choice13 = document.getElementById('choice13');
-    const choice14 = document.getElementById('choice14');
-    const choice15 = document.getElementById('choice15');
-    const choice16 = document.getElementById('choice16');
-    const choice17 = document.getElementById('choice17');
-    const choice18 = document.getElementById('choice18');
-    const choice19 = document.getElementById('choice19');
-    const choice20 = document.getElementById('choice20');
-
-    const result = document.getElementById('result');
-    const checkresult = document.getElementById('checkresult');
-    const scoreresult = document.getElementById('scoreresult');
-    const tekstvraag = document.getElementById('tekstvraag');
-    const volgendevraag = document.getElementById('volgendevraag');
-    const Flags = [
-    "Luxemburg", "Zuid-Afrika", "Spanje", "Russia", "Kenia", "Jemen", "Bhutan", "Lesotho", "Luxemburg", "Noorwegen",
-    "Brunei", "Guatemala", "Venezuela", "Servië", "Mozambique", "Kirgizië", "Palau", "Ivoorkust", "San Marino", "Andorra",
-    "Kaapverdië"
-    ];
-
-    const knoppen = [choice1, choice2, choice3, choice4];
-    
-    const vragen = [
-        { question1: "Luxemburg", options: ["Nederland", "Paraguay", "Luxemburg", "Rusland"], answer: "Luxemburg" },
-        { question2: "Zuid-Afrika", options: ["Sudan", "Zuid-Afrika", "Namibië", "South Sudan"], answer: "Zuid-Afrika" },
-        { question3: "Spanje", options: ["Portugal", "Colombia", "Ecuador", "Spanje"], answer: "Spanje" },
-        { question4: "Russia", options: ["Rusland", "Oekraïne", "Polen", "Belarus"], answer: "Russia" },
-        { question5: "Kenia", options: ["Kenia", "Sudan", "Malawi", "South sudan"], answer: "Kenia" },
-        { question6: "Jemen", options: ["Iraq", "Jemen", "Syrië", "Egypte"], answer: "Jemen" },
-        { question7: "Bhutan", options: ["Mongolië", "Sri Lanka", "Bhutan", "Kazachstan"], answer: "Bhutan" },
-        { question8: "Lesotho", options: ["Botswana", "Sierra Leone", "Lesotho", "Somalië"], answer: "Lesotho" },
-        { question9: "Luxemburg", options: ["Nederland", "Luxemburg", "Paraguay", "Kroatië"], answer: "Luxemburg" },
-        { question10: "Noorwegen", options: ["IJsland", "Faeröer", "Denemarken", "Noorwegen"], answer: "Noorwegen" },
-        { question11: "Brunei", options: ["Saoedi-Arabië", "Pakistan", "Brunei", "Bhutan"], answer: "Brunei" },
-        { question12: "Guatemala", options: ["El Salvador", "Guatemala", "Honduras", "Nicaragua"], answer: "Guatemala" },
-        { question13: "Venezuela", options: ["Colombia", "Ecuador", "Bolivia", "Venezuela"], answer: "Venezuela" },
-        { question14: "Servië", options: ["Slowakije", "Servië", "Slovenië", "Kroatië"], answer: "Servië" },
-        { question15: "Mozambique", options: ["Kenia", "Zuid-Afrika", "Mozambique", "Zuid-Soedan"], answer: "Mozambique" },
-        { question16: "Kirgizië", options: ["Kazachstan", "Kirgizië", "Noord-Macedonië", "Turkije"], answer: "Kirgizië" },
-        { question17: "Palau", options: ["Bangladesh", "Japan", "Laos", "Palau"], answer: "Palau" },
-        { question18: "Ivoorkust", options: ["Ierland", "Nigeria", "Ivoorkust", "Italië"], answer: "Ivoorkust" },
-        { question19: "San Marino", options: ["Nicaragua", "San Marino", "El Salvador", "Honduras"], answer: "San Marino" },
-        { question20: "Andorra", options: ["Roemenië", "Moldavië", "Tsjaad", "Andorra"], answer: "Andorra" },
-        { question21: "Kaapverdië", options: ["Europese Unie", "Kaapverdië", "Kosovo", "Bosnië en Herzegovina"], answer: "Kaapverdië" },
-        
-    ];
-
-    let currentQuestion = 0;
-    let score = 0;
-    let beantwoord = false;
-    let spelKlaar = false;
-
-    let checks = new Array(vragen.length).fill(null);
-
-    let gekozen = new Array(vragen.length).fill("");
-
-        tekstvraag.textContent = "Vraag " + (currentQuestion + 1) + " van " + vragen.length + ": van welk land is deze vlag?";
-        flag.style.display = "inline";
-        flag.src = "https://static.vecteezy.com/system/resources/previews/000/394/575/original/vector-illustration-of-luxembourg-flag.jpg" + vraag.code + ".png";
-        flag.alt = "Vlag van vraag " + (currentQuestion + 1);
-
-
-    for (let i = 0; i < knoppen.length; i++) {
-            knoppen[i].textContent = vraag.options[i];
-            knoppen[i].disabled = false;
-            knoppen[i].className = "";
-            knoppen[i].style.display = "block";
-        }
-
-        checkresult.textContent = "";
-        result.innerHTML = "";
-        updateScore();
-        volgendevraag.style.display = "none";
-
-        function updateScore() {
-        let beantwoordevragen = 0;
-        for (let i = 0; i < checks.length; i++) {
-            if (checks[i] !== null) {
-                beantwoordevragen++;
-            }
-        }
-        scoreresult.textContent = "Score: " + score + " / " + beantwoordevragen + "  (totaal " + vragen.length + " vragen)";
+const title = document.getElementById("title");
+const questionText = document.getElementById("questionText");
+const flagImage = document.getElementById("flag");
+const button1 = document.getElementById("button1");
+const button2 = document.getElementById("button2");
+const button3 = document.getElementById("button3");
+const button4 = document.getElementById("button4");
+const resultText = document.getElementById("result");
+const checksText = document.getElementById("checks");
+const scoreText = document.getElementById("score");
+const nextButton = document.getElementById("next");
+ 
+let questionNumber = 1;
+let score = 0;
+let checks = "";
+let correctButton = 0;
+let answered = false;
+ 
+title.textContent = "Welke vlag is dit?";
+nextButton.textContent = "Volgende";
+//  dit is een comment
+function showQuestion() {
+    answered = false;
+    resultText.textContent = "";
+    nextButton.style.display = "none";
+    questionText.textContent = "Vraag " + questionNumber + " van de 20";
+ 
+    button1.classList.remove("correct", "wrong");
+    button2.classList.remove("correct", "wrong");
+    button3.classList.remove("correct", "wrong");
+    button4.classList.remove("correct", "wrong");
+ 
+    if (questionNumber === 1) {
+        flagImage.src = "https://flagcdn.com/w320/nl.png";
+        button1.textContent = "France";
+        button2.textContent = "Luxembourg";
+        button3.textContent = "Netherlands";
+        button4.textContent = "Russia";
+        correctButton = 3;
     }
-
-    function checkAnswer(knop) {
-        if (beantwoord) {
-            return;
-        }
-        beantwoord = true;
-    
-        const vraag = vragen[currentQuestion];
-        const keuze = knop.textContent;
-        gekozen[currentQuestion] = keuze;
-    
-        if (keuze === vraag.answer) {
-            goedAntwoord(knop);
-        } else {
-            foutAntwoord(knop, vraag);
-        }
-    
-        // Alle knoppen blokkeren
-        for (let i = 0; i < knoppen.length; i++) {
-            knoppen[i].disabled = true;
-        }
-    
-        updateScore();
-        toonVolgendeKnop();
+    else if (questionNumber === 2) {
+        flagImage.src = "https://flagcdn.com/w320/fr.png";
+        button1.textContent = "Italy";
+        button2.textContent = "France";
+        button3.textContent = "Belgium";
+        button4.textContent = "Ireland";
+        correctButton = 2;
     }
-    function goedAntwoord(knop) {
-        if (checks[currentQuestion] === null) {
-            score = score + 1;
-            checks[currentQuestion] = true;
-        }
-        knop.className = "goed";
-        checkresult.textContent = "Goed! +1 punt";
+    else if (questionNumber === 3) {
+        flagImage.src = "https://flagcdn.com/w320/lu.png";
+        button1.textContent = "Luxembourg";
+        button2.textContent = "Netherlands";
+        button3.textContent = "Germany";
+        button4.textContent = "Russia";
+        correctButton = 1;
     }
-    function foutAntwoord(knop, vraag) {
-        if (checks[currentQuestion] === null) {
-            checks[currentQuestion] = false;
+    else if (questionNumber === 4) {
+        flagImage.src = "https://flagcdn.com/w320/ru.png";
+        button1.textContent = "Poland";
+        button2.textContent = "Russia";
+        button3.textContent = "France";
+        button4.textContent = "Austria";
+        correctButton = 2;
+    }
+    else if (questionNumber === 5) {
+        flagImage.src = "https://flagcdn.com/w320/de.png";
+        button1.textContent = "Belgium";
+        button2.textContent = "Germany";
+        button3.textContent = "Spain";
+        button4.textContent = "Sweden";
+        correctButton = 2;
+    }
+    else if (questionNumber === 6) {
+        flagImage.src = "https://flagcdn.com/w320/be.png";
+        button1.textContent = "Belgium";
+        button2.textContent = "Italy";
+        button3.textContent = "Greece";
+        button4.textContent = "Norway";
+        correctButton = 1;
+    }
+    else if (questionNumber === 7) {
+        flagImage.src = "https://flagcdn.com/w320/it.png";
+        button1.textContent = "Ireland";
+        button2.textContent = "Hungary";
+        button3.textContent = "Italy";
+        button4.textContent = "France";
+        correctButton = 3;
+    }
+    else if (questionNumber === 8) {
+        flagImage.src = "https://flagcdn.com/w320/es.png";
+        button1.textContent = "Portugal";
+        button2.textContent = "Spain";
+        button3.textContent = "Turkey";
+        button4.textContent = "Brazil";
+        correctButton = 2;
+    }
+    else if (questionNumber === 9) {
+        flagImage.src = "https://flagcdn.com/w320/jp.png";
+        button1.textContent = "China";
+        button2.textContent = "Japan";
+        button3.textContent = "Poland";
+        button4.textContent = "Canada";
+        correctButton = 2;
+    }
+    else if (questionNumber === 10) {
+        flagImage.src = "https://flagcdn.com/w320/br.png";
+        button1.textContent = "Brazil";
+        button2.textContent = "Portugal";
+        button3.textContent = "Spain";
+        button4.textContent = "Greece";
+        correctButton = 1;
+    }
+    else if (questionNumber === 11) {
+        flagImage.src = "https://flagcdn.com/w320/ca.png";
+        button1.textContent = "Austria";
+        button2.textContent = "Switzerland";
+        button3.textContent = "Canada";
+        button4.textContent = "Turkey";
+        correctButton = 3;
+    }
+    else if (questionNumber === 12) {
+        flagImage.src = "https://flagcdn.com/w320/se.png";
+        button1.textContent = "Norway";
+        button2.textContent = "Sweden";
+        button3.textContent = "Finland";
+        button4.textContent = "Greece";
+        correctButton = 2;
+    }
+    else if (questionNumber === 13) {
+        flagImage.src = "https://flagcdn.com/w320/no.png";
+        button1.textContent = "Sweden";
+        button2.textContent = "Denmark";
+        button3.textContent = "Norway";
+        button4.textContent = "Finland";
+        correctButton = 3;
+    }
+    else if (questionNumber === 14) {
+        flagImage.src = "https://flagcdn.com/w320/ie.png";
+        button1.textContent = "Ireland";
+        button2.textContent = "Italy";
+        button3.textContent = "India";
+        button4.textContent = "Poland";
+        correctButton = 1;
+    }
+    else if (questionNumber === 15) {
+        flagImage.src = "https://flagcdn.com/w320/pl.png";
+        button1.textContent = "Poland";
+        button2.textContent = "Austria";
+        button3.textContent = "Indonesia";
+        button4.textContent = "Germany";
+        correctButton = 1;
+    }
+    else if (questionNumber === 16) {
+        flagImage.src = "https://flagcdn.com/w320/ch.png";
+        button1.textContent = "Denmark";
+        button2.textContent = "Switzerland";
+        button3.textContent = "Austria";
+        button4.textContent = "Canada";
+        correctButton = 2;
+    }
+    else if (questionNumber === 17) {
+        flagImage.src = "https://flagcdn.com/w320/gr.png";
+        button1.textContent = "Greece";
+        button2.textContent = "Finland";
+        button3.textContent = "Sweden";
+        button4.textContent = "Argentina";
+        correctButton = 1;
+    }
+    else if (questionNumber === 18) {
+        flagImage.src = "https://flagcdn.com/w320/pt.png";
+        button1.textContent = "Spain";
+        button2.textContent = "Portugal";
+        button3.textContent = "Brazil";
+        button4.textContent = "Italy";
+        correctButton = 2;
+    }
+    else if (questionNumber === 19) {
+        flagImage.src = "https://flagcdn.com/w320/tr.png";
+        button1.textContent = "Tunisia";
+        button2.textContent = "Turkey";
+        button3.textContent = "Japan";
+        button4.textContent = "Morocco";
+        correctButton = 2;
+    }
+    else {
+        flagImage.src = "https://flagcdn.com/w320/at.png";
+        button1.textContent = "Poland";
+        button2.textContent = "Latvia";
+        button3.textContent = "Austria";
+        button4.textContent = "Switzerland";
+        correctButton = 3;
+    }
+}
+ 
+function checkAnswer(chosenButton) {
+    if (answered === true) {
+        return;
+    }
+ 
+    answered = true;
+ 
+    if (chosenButton === correctButton) {
+        score = score + 1;
+        checks = checks + "✓ ";
+        resultText.textContent = "Goed!";
+    }
+    else {
+        resultText.textContent = "Fout!";
+    }
+ 
+    if (correctButton === 1) {
+        button1.classList.add("correct");
+    }
+    else if (correctButton === 2) {
+        button2.classList.add("correct");
+    }
+    else if (correctButton === 3) {
+        button3.classList.add("correct");
+    }
+    else {
+        button4.classList.add("correct");
+    }
+ 
+    if (chosenButton !== correctButton) {
+        if (chosenButton === 1) {
+            button1.classList.add("wrong");
         }
-        knop.className = "fout";
-        checkresult.textContent = "Fout  Het juiste antwoord was: " + vraag.answer;
-    for (let i = 0; i < knoppen.length; i++) {
-            if (knoppen[i].textContent === vraag.answer) {
-                knoppen[i].className = "goed";
-            }
+        else if (chosenButton === 2) {
+            button2.classList.add("wrong");
+        }
+        else if (chosenButton === 3) {
+            button3.classList.add("wrong");
+        }
+        else {
+            button4.classList.add("wrong");
         }
     }
-
-    function toonVolgendeKnop() {
-        volgendevraag.style.display = "inline-block";
-        if (currentQuestion === vragen.length - 1) {
-            volgendevraag.textContent = "Bekijk resultaat";
-        } else {
-            volgendevraag.textContent = "Volgende vraag";
-        }
-    }
-
-    function volgendeVraag() {
-        currentQuestion = currentQuestion + 1;
-        showQuestion();
-    }
-
-    function showResult() {
-        spelKlaar = true;
-    
-        // Vraag-onderdelen verbergen
-        tekstvraag.textContent = "";
-        flag.style.display = "none";
-        for (let i = 0; i < knoppen.length; i++) {
-            knoppen[i].style.display = "none";
-        }
-        checkresult.textContent = "";
-
-        scoreresult.textContent = "Eindscore: " + score + " van de " + vragen.length;
-        let bericht = "";
-        const percentage = (score / vragen.length) * 100;
-        if (percentage === 100) {
-            bericht = "Perfect! Alles goed! ";
-        } else if (percentage >= 75) {
-            bericht = "Heel goed gedaan! ";
-        } else if (percentage >= 50) {
-            bericht = "Best goed, maar je kunt nog beter!";
-        } else {
-            bericht = "Oefen nog even, je kunt dit!";
-        }
-    let overzicht = bericht + "<br><br>";
-        for (let i = 0; i < vragen.length; i++) {
-            const vraag = vragen[i];
-            if (checks[i] === true) {
-                overzicht += "Vraag " + (i + 1) + ": ✅ " + vraag.answer + " (+1)<br>";
-            } else {
-                overzicht += "Vraag " + (i + 1) + ": ❌ jij kiesde " + gekozen[i] + ", juist was " + vraag.answer + " (0)<br>";
-            }
-        }
-        result.innerHTML = overzicht;
-    
-        volgendevraag.textContent = "Opnieuw spelen";
-        volgendevraag.style.display = "inline-block";
-    }
-
-    function resetSpel() {
-        currentQuestion = 0;
-        score = 0;
-        beantwoord = false;
-        spelKlaar = false;
-        checks = new Array(vragen.length).fill(null);
-        gekozen = new Array(vragen.length).fill("");
-        showQuestion();
-    }
-
-    choice1.addEventListener('click', function () { checkAnswer(choices1); });
-    choice2.addEventListener('click', function () { checkAnswer(choices2); });
-    choice3.addEventListener('click', function () { checkAnswer(choices3); });
-    choice4.addEventListener('click', function () { checkAnswer(choices4); });
-    choice5.addEventListener('click', function () { checkAnswer(choices5); });
-    choice6.addEventListener('click', function () { checkAnswer(choices6); });
-    choice7.addEventListener('click', function () { checkAnswer(choices7); });
-    choice8.addEventListener('click', function () { checkAnswer(choices8); });
-    choice9.addEventListener('click', function () { checkAnswer(choices9); });
-    choice10.addEventListener('click', function () { checkAnswer(choices10); });
-    choice11.addEventListener('click', function () { checkAnswer(choices11); });
-    choice12.addEventListener('click', function () { checkAnswer(choices12); });
-    choice13.addEventListener('click', function () { checkAnswer(choices13); });
-    choice14.addEventListener('click', function () { checkAnswer(choices14); });
-    choice15.addEventListener('click', function () { checkAnswer(choices15); });
-    choice16.addEventListener('click', function () { checkAnswer(choices16); });
-    choice17.addEventListener('click', function () { checkAnswer(choices17); });
-    choice18.addEventListener('click', function () { checkAnswer(choices18); });
-    choice19.addEventListener('click', function () { checkAnswer(choices19); });
-    choice20.addEventListener('click', function () { checkAnswer(choices20); });
-
-    
-
-    volgendevraag.addEventListener('click', function () {
-        if (spelKlaar) {
-            resetSpel();
-        } else if (currentQuestion === vragen.length - 1) {
-            showResult();
-        } else {
-            volgendeVraag();
-        }
-    });
-    flag.addEventListener('error', function () {
-        checkresult.textContent = "De vlag kon niet geladen worden. Controleer je internetverbinding.";
-    });
-    showQuestion();
+}
