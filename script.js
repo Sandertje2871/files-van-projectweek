@@ -100,3 +100,8 @@ function showResult() {
     resultaat.textContent = "Klaar! Je score is " + score + " van de " + vragen.length + ".";
     currentQuestion = vragen.length; 
 }
+
+for (const knop of knoppen) {
+    knop.addEventListener('click', function () { checkAnswer(knop); });
+}
+
