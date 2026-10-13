@@ -3,9 +3,9 @@ const choice1 = document.getElementById('choice1');
 const choice2 = document.getElementById('choice2');
 const choice3 = document.getElementById('choice3');
 const choice4 = document.getElementById('choice4');
-const resultaat = document.getElementById('resultaat');
-const checkresultaat = document.getElementById('checkresultaat');
-const scoreresultaat = document.getElementById('scoreresultaat');
+const result = document.getElementById('result');
+const checkresult = document.getElementById('checkresult');
+const scoreresult = document.getElementById('scoreresult');
 const tekstvraag = document.getElementById('tekstvraag');
 const volgendevraag = document.getElementById('volgendevraag');
 const Flags = [
@@ -40,7 +40,7 @@ const vragen = [
     { question21: "Kaapverdië", options: ["Europese Unie", "Kaapverdië", "Kosovo", "Bosnië en Herzegovina"], answer: "Kaapverdië" },
     
 ];
- 
+
 let currentQuestion = 0;
 let score = 0;
 let beantwoord = false;
@@ -63,8 +63,8 @@ for (let i = 0; i < knoppen.length; i++) {
         knoppen[i].style.display = "block";
     }
 
-    checkresultaat.textContent = "";
-    resultaat.innerHTML = "";
+    checkresult.textContent = "";
+    result.innerHTML = "";
     updateScore();
     volgendevraag.style.display = "none";
 
@@ -75,7 +75,7 @@ for (let i = 0; i < knoppen.length; i++) {
             beantwoordevragen++;
         }
     }
-    scoreresultaat.textContent = "Score: " + score + " / " + beantwoordevragen + "  (totaal " + vragen.length + " vragen)";
+    scoreresult.textContent = "Score: " + score + " / " + beantwoordevragen + "  (totaal " + vragen.length + " vragen)";
 }
 
 function checkAnswer(knop) {
@@ -108,14 +108,14 @@ function goedAntwoord(knop) {
         checks[currentQuestion] = true;
     }
     knop.className = "goed";
-    checkresultaat.textContent = "Goed! +1 punt";
+    checkresult.textContent = "Goed! +1 punt";
 }
 function foutAntwoord(knop, vraag) {
     if (checks[currentQuestion] === null) {
         checks[currentQuestion] = false;
     }
     knop.className = "fout";
-    checkresultaat.textContent = "Fout  Het juiste antwoord was: " + vraag.answer;
+    checkresult.textContent = "Fout  Het juiste antwoord was: " + vraag.answer;
  for (let i = 0; i < knoppen.length; i++) {
         if (knoppen[i].textContent === vraag.answer) {
             knoppen[i].className = "goed";
@@ -146,9 +146,9 @@ function showResult() {
     for (let i = 0; i < knoppen.length; i++) {
         knoppen[i].style.display = "none";
     }
-    checkresultaat.textContent = "";
+    checkresult.textContent = "";
 
-    scoreresultaat.textContent = "Eindscore: " + score + " van de " + vragen.length;
+    scoreresult.textContent = "Eindscore: " + score + " van de " + vragen.length;
     let bericht = "";
     const percentage = (score / vragen.length) * 100;
     if (percentage === 100) {
@@ -169,7 +169,7 @@ let overzicht = bericht + "<br><br>";
             overzicht += "Vraag " + (i + 1) + ": ❌ jij kiesde " + gekozen[i] + ", juist was " + vraag.answer + " (0)<br>";
         }
     }
-    resultaat.innerHTML = overzicht;
+    result.innerHTML = overzicht;
  
     volgendevraag.textContent = "Opnieuw spelen";
     volgendevraag.style.display = "inline-block";
