@@ -22,12 +22,13 @@ button {
   padding: 10px 20px;
   font-size: 50px;
   cursor: pointer;
+  justify-content: center;
 }
 
 h2 {
   text-align: center;
   width: 100%;
-background-color: pink;
+  background-color: pink;
 }
 
 .img {
@@ -36,12 +37,14 @@ background-color: pink;
     max-width: 100%;
     height: auto;
     margin: 50px auto;
+    
 }
 .choices {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 20px;
     justify-content: center;
+    border: 3px solid black;
     margin: 50px auto;
     padding: 20px;
     margin: 0;
