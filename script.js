@@ -202,10 +202,28 @@
         showQuestion();
     }
 
-    choice1.addEventListener('click', function () { checkAnswer(choice1); });
-    choice2.addEventListener('click', function () { checkAnswer(choice2); });
-    choice3.addEventListener('click', function () { checkAnswer(choice3); });
-    choice4.addEventListener('click', function () { checkAnswer(choice4); });
+    choice1.addEventListener('click', function () { checkAnswer(choices1); });
+    choice2.addEventListener('click', function () { checkAnswer(choices2); });
+    choice3.addEventListener('click', function () { checkAnswer(choices3); });
+    choice4.addEventListener('click', function () { checkAnswer(choices4); });
+    choice5.addEventListener('click', function () { checkAnswer(choices5); });
+    choice6.addEventListener('click', function () { checkAnswer(choices6); });
+    choice7.addEventListener('click', function () { checkAnswer(choices7); });
+    choice8.addEventListener('click', function () { checkAnswer(choices8); });
+    choice9.addEventListener('click', function () { checkAnswer(choices9); });
+    choice10.addEventListener('click', function () { checkAnswer(choices10); });
+    choice11.addEventListener('click', function () { checkAnswer(choices11); });
+    choice12.addEventListener('click', function () { checkAnswer(choices12); });
+    choice13.addEventListener('click', function () { checkAnswer(choices13); });
+    choice14.addEventListener('click', function () { checkAnswer(choices14); });
+    choice15.addEventListener('click', function () { checkAnswer(choices15); });
+    choice16.addEventListener('click', function () { checkAnswer(choices16); });
+    choice17.addEventListener('click', function () { checkAnswer(choices17); });
+    choice18.addEventListener('click', function () { checkAnswer(choices18); });
+    choice19.addEventListener('click', function () { checkAnswer(choices19); });
+    choice20.addEventListener('click', function () { checkAnswer(choices20); });
+
+    
 
     volgendevraag.addEventListener('click', function () {
         if (spelKlaar) {
