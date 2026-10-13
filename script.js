@@ -184,3 +184,8 @@ function resetSpel() {
     gekozen = new Array(vragen.length).fill("");
     showQuestion();
 }
+
+choice1.addEventListener('click', function () { checkAnswer(choice1); });
+choice2.addEventListener('click', function () { checkAnswer(choice2); });
+choice3.addEventListener('click', function () { checkAnswer(choice3); });
+choice4.addEventListener('click', function () { checkAnswer(choice4); });
