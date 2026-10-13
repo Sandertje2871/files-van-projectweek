@@ -9,9 +9,9 @@ const scoreresultaat = document.getElementById('scoreresultaat');
 const tekstvraag = document.getElementById('tekstvraag');
 const volgendevraag = document.getElementById('volgendevraag');
 const Flags = [
-    "Luxemburg", "Zuid-Afrika", "Spanje", "Russia", "Kenia", "Jemen", "Bhutan", "Lesotho", "Luxemburg", "Noorwegen",
-    "Brunei", "Guatemala", "Venezuela", "Servië", "Mozambique", "Kirgizië", "Palau", "Ivoorkust", "San Marino", "Andorra",
-    "Kaapverdië"
+"Luxemburg", "Zuid-Afrika", "Spanje", "Russia", "Kenia", "Jemen", "Bhutan", "Lesotho", "Luxemburg", "Noorwegen",
+"Brunei", "Guatemala", "Venezuela", "Servië", "Mozambique", "Kirgizië", "Palau", "Ivoorkust", "San Marino", "Andorra",
+"Kaapverdië"
 ];
  
  
@@ -48,8 +48,18 @@ function showQuestion() {
     const vraag = vragen[currentQuestion];
     beantwoord = false;
 
-    tekstvraag.textContent = `Welke vlag is van ${vraag[`question${currentQuestion + 1}`]}?`;
+    tekstvraag.textContent = "Vraag " + (currentQuestion + 1) + " van " + vragen.length + ": van welk land is deze vlag?";
     flag.src = "https://static.vecteezy.com/system/resources/previews/000/394/575/original/vector-illustration-of-luxembourg-flag.jpg";
-    flag.alt = "Luxembourg flag";
+    flag.alt = "Luxembourg";
+
+for (let i = 0; i < knoppen.length; i++) {
+        knoppen[i].textContent = vraag.options[i];
+        knoppen[i].disabled = false;
+        knoppen[i].className = "";
+    }
+
+    
+
+
 
 }
