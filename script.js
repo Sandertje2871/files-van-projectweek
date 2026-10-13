@@ -46,8 +46,10 @@ let checks = ""
 
 function showQuestion() {
     const vraag = vragen[currentQuestion];
+    beantwoord = false;
 
-
-
+    tekstvraag.textContent = `Welke vlag is van ${vraag[`question${currentQuestion + 1}`]}?`;
+    flag.src = "https://static.vecteezy.com/system/resources/previews/000/394/575/original/vector-illustration-of-luxembourg-flag.jpg";
+    flag.alt = "Luxembourg flag";
 
 }
