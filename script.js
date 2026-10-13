@@ -13,7 +13,8 @@ const Flags = [
 "Brunei", "Guatemala", "Venezuela", "Servië", "Mozambique", "Kirgizië", "Palau", "Ivoorkust", "San Marino", "Andorra",
 "Kaapverdië"
 ];
- 
+
+const knoppen = [choice1, choice2, choice3, choice4];
  
 const vragen = [
     { question1: "Luxemburg", options: ["Nederland", "Paraguay", "Luxemburg", "Rusland"], answer: "Luxemburg" },
@@ -42,82 +43,144 @@ const vragen = [
  
 let currentQuestion = 0;
 let score = 0;
-let checks = ""
+let beantwoord = false;
+let spelKlaar = false;
 
-function showQuestion() {
-    const vraag = vragen[currentQuestion];
-    beantwoord = false;
+let checks = new Array(vragen.length).fill(null);
+
+let gekozen = new Array(vragen.length).fill("");
 
     tekstvraag.textContent = "Vraag " + (currentQuestion + 1) + " van " + vragen.length + ": van welk land is deze vlag?";
-    flag.src = "https://static.vecteezy.com/system/resources/previews/000/394/575/original/vector-illustration-of-luxembourg-flag.jpg";
-    flag.alt = "Luxembourg";
+    flag.style.display = "inline";
+    flag.src = "https://static.vecteezy.com/system/resources/previews/000/394/575/original/vector-illustration-of-luxembourg-flag.jpg" + vraag.code + ".png";
+    flag.alt = "Vlag van vraag " + (currentQuestion + 1);
+
 
 for (let i = 0; i < knoppen.length; i++) {
         knoppen[i].textContent = vraag.options[i];
         knoppen[i].disabled = false;
         knoppen[i].className = "";
+        knoppen[i].style.display = "block";
     }
 
     checkresultaat.textContent = "";
-    scoreresultaat.textContent = "Score: " + score + " / " + currentQuestion;
+    resultaat.innerHTML = "";
+    updateScore();
     volgendevraag.style.display = "none";
-}
 
-
-function checkAnswer(gekozenKnop) {
-    if (beantwoord) return;
-    beantwoord = true;
-}
-
-const vraag = vragen[currentQuestion];
-
-    if (gekozenKnop.textContent === vraag.answer) {
-        score++;
-        gekozenKnop.className = "goed";
-        checkresultaat.textContent = "Goed! ";
-    } else {
-        gekozenKnop.className = "fout";
-        checkresultaat.textContent = "Fout! Het was " + vraag.answer;
-        for (const knop of knoppen) {
-            if (knop.textContent === vraag.answer) knop.className = "goed";
+    function updateScore() {
+    let beantwoordevragen = 0;
+    for (let i = 0; i < checks.length; i++) {
+        if (checks[i] !== null) {
+            beantwoordevragen++;
         }
     }
-
-    for (const knop of knoppen) knop.disabled = true; {
- 
-    scoreresultaat.textContent = "Score: " + score + " / " + (currentQuestion + 1);
-    volgendevraag.style.display = "inline-block";
-    volgendevraag.textContent = (currentQuestion === vragen.length - 1) ? "Bekijk resultaat" : "Volgende vraag";
+    scoreresultaat.textContent = "Score: " + score + " / " + beantwoordevragen + "  (totaal " + vragen.length + " vragen)";
 }
+
+function checkAnswer(knop) {
+    if (beantwoord) {
+        return;
+    }
+    beantwoord = true;
+ 
+    const vraag = vragen[currentQuestion];
+    const keuze = knop.textContent;
+    gekozen[currentQuestion] = keuze;
+ 
+    if (keuze === vraag.answer) {
+        goedAntwoord(knop);
+    } else {
+        foutAntwoord(knop, vraag);
+    }
+ 
+    // Alle knoppen blokkeren
+    for (let i = 0; i < knoppen.length; i++) {
+        knoppen[i].disabled = true;
+    }
+ 
+    updateScore();
+    toonVolgendeKnop();
+}
+function goedAntwoord(knop) {
+    if (checks[currentQuestion] === null) {
+        score = score + 1;
+        checks[currentQuestion] = true;
+    }
+    knop.className = "goed";
+    checkresultaat.textContent = "Goed! +1 punt";
+}
+function foutAntwoord(knop, vraag) {
+    if (checks[currentQuestion] === null) {
+        checks[currentQuestion] = false;
+    }
+    knop.className = "fout";
+    checkresultaat.textContent = "Fout  Het juiste antwoord was: " + vraag.answer;
+ for (let i = 0; i < knoppen.length; i++) {
+        if (knoppen[i].textContent === vraag.answer) {
+            knoppen[i].className = "goed";
+        }
+    }
+}
+
+function toonVolgendeKnop() {
+    volgendevraag.style.display = "inline-block";
+    if (currentQuestion === vragen.length - 1) {
+        volgendevraag.textContent = "Bekijk resultaat";
+    } else {
+        volgendevraag.textContent = "Volgende vraag";
+    }
+}
+
+function volgendeVraag() {
+    currentQuestion = currentQuestion + 1;
+    showQuestion();
+}
+
 function showResult() {
+    spelKlaar = true;
+ 
+    // Vraag-onderdelen verbergen
     tekstvraag.textContent = "";
     flag.style.display = "none";
-    for (const knop of knoppen) knop.style.display = "none";
+    for (let i = 0; i < knoppen.length; i++) {
+        knoppen[i].style.display = "none";
+    }
     checkresultaat.textContent = "";
-    scoreresultaat.textContent = "";
+
+    scoreresultaat.textContent = "Eindscore: " + score + " van de " + vragen.length;
+    let bericht = "";
+    const percentage = (score / vragen.length) * 100;
+    if (percentage === 100) {
+        bericht = "Perfect! Alles goed! ";
+    } else if (percentage >= 75) {
+        bericht = "Heel goed gedaan! ";
+    } else if (percentage >= 50) {
+        bericht = "Best goed, maar je kunt nog beter!";
+    } else {
+        bericht = "Oefen nog even, je kunt dit!";
+    }
+let overzicht = bericht + "<br><br>";
+    for (let i = 0; i < vragen.length; i++) {
+        const vraag = vragen[i];
+        if (checks[i] === true) {
+            overzicht += "Vraag " + (i + 1) + ": ✅ " + vraag.answer + " (+1)<br>";
+        } else {
+            overzicht += "Vraag " + (i + 1) + ": ❌ jij kiesde " + gekozen[i] + ", juist was " + vraag.answer + " (0)<br>";
+        }
+    }
+    resultaat.innerHTML = overzicht;
+ 
     volgendevraag.textContent = "Opnieuw spelen";
     volgendevraag.style.display = "inline-block";
-    resultaat.textContent = "Klaar! Je score is " + score + " van de " + vragen.length + ".";
-    currentQuestion = vragen.length; 
 }
 
-for (const knop of knoppen) {
-    knop.addEventListener('click', function () { checkAnswer(knop); });
+function resetSpel() {
+    currentQuestion = 0;
+    score = 0;
+    beantwoord = false;
+    spelKlaar = false;
+    checks = new Array(vragen.length).fill(null);
+    gekozen = new Array(vragen.length).fill("");
+    showQuestion();
 }
-
-volgendevraag.addEventListener('click', function () {
-    if (currentQuestion >= vragen.length) {
-        currentQuestion = 0;
-        score = 0;
-        resultaat.textContent = "";
-        flag.style.display = "inline";
-        for (const knop of knoppen) knop.style.display = "block";
-        showQuestion();
-    } else if (currentQuestion === vragen.length - 1) {
-        showResult();
-    } else {
-        currentQuestion++;
-        showQuestion();
-    }
-});
-
