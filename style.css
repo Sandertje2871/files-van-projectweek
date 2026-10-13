@@ -1,4 +1,30 @@
-h1 {
+body {
+  background-image: url('https://img.freepik.com/vrije-vector/alle-nationale-vlaggen-van-de-wereld-achtergrondstijl_18981-512.jpg?size=626&ext=jpg');
+}
+
+H1 {
+  text-align: center;
+  width: 100%;
+  background-color: pink;
+}
+
+p {
+  text-align: center;
+  width: 100%;
+  background-color: pink;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  background-color: pink;
+  border: none;
+  padding: 10px 20px;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+h2 {
   text-align: center;
   width: 100%;
 background-color: pink;
