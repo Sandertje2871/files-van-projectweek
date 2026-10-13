@@ -82,3 +82,10 @@ const vraag = vragen[currentQuestion];
             if (knop.textContent === vraag.answer) knop.className = "goed";
         }
     }
+
+    for (const knop of knoppen) knop.disabled = true; {
+ 
+    scoreresultaat.textContent = "Score: " + score + " / " + (currentQuestion + 1);
+    volgendevraag.style.display = "inline-block";
+    volgendevraag.textContent = (currentQuestion === vragen.length - 1) ? "Bekijk resultaat" : "Volgende vraag";
+}
