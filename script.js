@@ -189,3 +189,17 @@ choice1.addEventListener('click', function () { checkAnswer(choice1); });
 choice2.addEventListener('click', function () { checkAnswer(choice2); });
 choice3.addEventListener('click', function () { checkAnswer(choice3); });
 choice4.addEventListener('click', function () { checkAnswer(choice4); });
+
+volgendevraag.addEventListener('click', function () {
+    if (spelKlaar) {
+        resetSpel();
+    } else if (currentQuestion === vragen.length - 1) {
+        showResult();
+    } else {
+        volgendeVraag();
+    }
+});
+flag.addEventListener('error', function () {
+    checkresult.textContent = "De vlag kon niet geladen worden. Controleer je internetverbinding.";
+});
+showQuestion();
