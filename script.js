@@ -1,8 +1,8 @@
 const flag = document.getElementById('flag');
-const button1 = document.getElementById('button1');
-const button2 = document.getElementById('button2');
-const button3 = document.getElementById('button3');
-const button4 = document.getElementById('button4');
+const choice1 = document.getElementById('choice1');
+const choice2 = document.getElementById('choice2');
+const choice3 = document.getElementById('choice3');
+const choice4 = document.getElementById('choice4');
 const resultaat = document.getElementById('resultaat');
 const checkresultaat = document.getElementById('checkresultaat');
 const scoreresultaat = document.getElementById('scoreresultaat');
@@ -17,7 +17,7 @@ const Flags = [
     "Sudan",
     "Namibia",
     "South Sudan",
-    "Spanje",
+    "Spanje",   
     "Portugal",
     "Colombia",
     "Ecuador",
@@ -75,71 +75,41 @@ const Flags = [
     "Bosnia",
     "Herzegovina",
 ];
-
+ 
+ 
 const vragen = [
-    { flag: "Luxemburg", options: ["Netherlands", "Luxembourg", "France", "Russia"], answer: "Luxembourg" },
-    { flag: "Netherlands", options: ["Luxembourg", "Netherlands", "Croatia", "Paraguay"], answer: "Netherlands" },
-    { flag: "Paraguay", options: ["Netherlands", "Croatia", "Paraguay", "Serbia"], answer: "Paraguay" },
-    { flag: "Russia", options: ["Slovakia", "Slovenia", "Russia", "Netherlands"], answer: "Russia" },
-    { flag: "Zuid-Afrika", options: ["Namibia", "South Africa", "Botswana", "Zimbabwe"], answer: "South Africa" },
-    { flag: "Sudan", options: ["Egypt", "Iraq", "Sudan", "Syria"], answer: "Sudan" },
-    { flag: "Namibia", options: ["South Africa", "Namibia", "Botswana", "Lesotho"], answer: "Namibia" },
-    { flag: "South Sudan", options: ["Sudan", "Kenya", "South Sudan", "Uganda"], answer: "South Sudan" },
-    { flag: "Spanje", options: ["Spain", "Portugal", "Italy", "Romania"], answer: "Spain" },
-    { flag: "Portugal", options: ["Spain", "Portugal", "Italy", "Hungary"], answer: "Portugal" },
-    { flag: "Colombia", options: ["Ecuador", "Venezuela", "Colombia", "Bolivia"], answer: "Colombia" },
-    { flag: "Ecuador", options: ["Colombia", "Ecuador", "Venezuela", "Bolivia"], answer: "Ecuador" },
-    { flag: "Kenia", options: ["Kenya", "South Sudan", "Malawi", "Uganda"], answer: "Kenya" },
-    { flag: "Malawi", options: ["Malawi", "Kenya", "Mozambique", "South Sudan"], answer: "Malawi" },
-    { flag: "Jemen", options: ["Egypt", "Syria", "Yemen", "Iraq"], answer: "Yemen" },
-    { flag: "Iraq", options: ["Syria", "Iraq", "Egypt", "Yemen"], answer: "Iraq" },
-    { flag: "Syria", options: ["Iraq", "Yemen", "Syria", "Egypt"], answer: "Syria" },
-    { flag: "Egypt", options: ["Egypt", "Syria", "Iraq", "Sudan"], answer: "Egypt" },
-    { flag: "Bhutan", options: ["Bhutan", "Nepal", "Sri Lanka", "Mongolia"], answer: "Bhutan" },
-    { flag: "Mongolia", options: ["Mongolia", "Kazakhstan", "Bhutan", "Kyrgyzstan"], answer: "Mongolia" },
-    { flag: "Sri Lanka", options: ["Bhutan", "Sri Lanka", "Bangladesh", "Pakistan"], answer: "Sri Lanka" },
-    { flag: "Kazakhstan", options: ["Mongolia", "Kazakhstan", "Kyrgyzstan", "Uzbekistan"], answer: "Kazakhstan" },
-    { flag: "Lesotho", options: ["Botswana", "Lesotho", "South Africa", "Namibia"], answer: "Lesotho" },
-    { flag: "Botswana", options: ["Botswana", "Lesotho", "Namibia", "South Africa"], answer: "Botswana" },
-    { flag: "Sierra Leone", options: ["Sierra Leone", "Nigeria", "Ivory Coast", "Ireland"], answer: "Sierra Leone" },
-    { flag: "Somalia", options: ["Somalia", "Djibouti", "Eritrea", "Micronesia"], answer: "Somalia" },
-    { flag: "Croatia", options: ["Serbia", "Slovakia", "Croatia", "Slovenia"], answer: "Croatia" },
-    { flag: "Norway", options: ["Iceland", "Norway", "Denmark", "Faroe Islands"], answer: "Norway" },
-    { flag: "Iceland", options: ["Norway", "Iceland", "Faroe Islands", "Denmark"], answer: "Iceland" },
-    { flag: "Faroe Islands", options: ["Iceland", "Norway", "Faroe Islands", "Denmark"], answer: "Faroe Islands" },
-    { flag: "Denmark", options: ["Denmark", "Norway", "Iceland", "Faroe Islands"], answer: "Denmark" },
-    { flag: "Brunei", options: ["Brunei", "Malaysia", "Singapore", "Pakistan"], answer: "Brunei" },
-    { flag: "Saudi Arabia", options: ["Pakistan", "Saudi Arabia", "Bangladesh", "Brunei"], answer: "Saudi Arabia" },
-    { flag: "Pakistan", options: ["Pakistan", "Saudi Arabia", "Bangladesh", "Algeria"], answer: "Pakistan" },
-    { flag: "Guatemala", options: ["Guatemala", "Nicaragua", "Honduras", "El Salvador"], answer: "Guatemala" },
-    { flag: "El Salvador", options: ["Nicaragua", "Honduras", "El Salvador", "Guatemala"], answer: "El Salvador" },
-    { flag: "Honduras", options: ["Honduras", "Nicaragua", "El Salvador", "Guatemala"], answer: "Honduras" },
-    { flag: "Nicaragua", options: ["Nicaragua", "Honduras", "Guatemala", "El Salvador"], answer: "Nicaragua" },
-    { flag: "Venezuela", options: ["Colombia", "Ecuador", "Venezuela", "Bolivia"], answer: "Venezuela" },
-    { flag: "Bolivia", options: ["Bolivia", "Lithuania", "Hungary", "Bulgaria"], answer: "Bolivia" },
-    { flag: "Serbia", options: ["Serbia", "Croatia", "Slovakia", "Slovenia"], answer: "Serbia" },
-    { flag: "Slovakia", options: ["Slovenia", "Slovakia", "Croatia", "Russia"], answer: "Slovakia" },
-    { flag: "Slovenia", options: ["Slovakia", "Slovenia", "Croatia", "Serbia"], answer: "Slovenia" },
-    { flag: "Mozambique", options: ["Mozambique", "Malawi", "Zimbabwe", "Kenya"], answer: "Mozambique" },
-    { flag: "Kyrgyzstan", options: ["Kazakhstan", "Kyrgyzstan", "Mongolia", "Tajikistan"], answer: "Kyrgyzstan" },
-    { flag: "North Macedonia", options: ["North Macedonia", "Albania", "Montenegro", "Turkey"], answer: "North Macedonia" },
-    { flag: "Turkey", options: ["Turkey", "Tunisia", "Algeria", "Pakistan"], answer: "Turkey" },
-    { flag: "Palau", options: ["Palau", "Bangladesh", "Japan", "Micronesia"], answer: "Palau" },
-    { flag: "Bangladesh", options: ["Bangladesh", "Japan", "Palau", "Pakistan"], answer: "Bangladesh" },
-    { flag: "Japan", options: ["Japan", "Bangladesh", "Palau", "Indonesia"], answer: "Japan" },
-    { flag: "Laos", options: ["Laos", "Thailand", "Cambodia", "Vietnam"], answer: "Laos" },
-    { flag: "Ivory Coast", options: ["Ireland", "Ivory Coast", "Italy", "Nigeria"], answer: "Ivory Coast" },
-    { flag: "Ireland", options: ["Ivory Coast", "Ireland", "Italy", "France"], answer: "Ireland" },
-    { flag: "Nigeria", options: ["Nigeria", "Ireland", "Ivory Coast", "Pakistan"], answer: "Nigeria" },
-    { flag: "Italy", options: ["Italy", "Ireland", "Ivory Coast", "Hungary"], answer: "Italy" },
-    { flag: "San Marino", options: ["San Marino", "Andorra", "Romania", "Moldova"], answer: "San Marino" },
-    { flag: "Andorra", options: ["Andorra", "Romania", "Moldova", "San Marino"], answer: "Andorra" },
-    { flag: "Romania", options: ["Romania", "Moldova", "Chad", "Andorra"], answer: "Romania" },
-    { flag: "Moldova", options: ["Moldova", "Romania", "Chad", "Andorra"], answer: "Moldova" },
-    { flag: "Chad", options: ["Chad", "Romania", "Moldova", "Andorra"], answer: "Chad" },
-    { flag: "Cape Verde", options: ["Cape Verde", "European Union", "Somalia", "Greece"], answer: "Cape Verde" },
-    { flag: "European Union", options: ["European Union", "Kosovo", "Somalia", "Micronesia"], answer: "European Union" },
-    { flag: "Kosovo", options: ["Kosovo", "Bosnia and Herzegovina", "Albania", "Serbia"], answer: "Kosovo" },
-    { flag: "Bosnia", options: ["Bosnia", "Serbia", "Slovakia", "Croatia"], answer: "Bosnia" },
-    { flag: "Herzegovina", options: ["Herzegovina", "Serbia", "Croatia", "Slovenia"], answer: "Herzegovina" }
-]; 
+    { flag: "Luxemburg", options: ["Nederland", "Paraguay", "Luxemburg", "Rusland"], answer: "Luxemburg" },
+    { flag: "Zuid-Afrika", options: ["Sudan", "Zuid-Afrika", "Namibië", "South Sudan"], answer: "Zuid-Afrika" },
+    { flag: "Spanje", options: ["Portugal", "Colombia", "Ecuador", "Spanje"], answer: "Spanje" },
+    { flag: "Russia", options: ["Rusland", "Oekraïne", "Polen", "Belarus"], answer: "Russia" },
+    { flag: "Kenia", options: ["Kenia", "Sudan", "Malawi", "South sudan"], answer: "Kenia" },
+    { flag: "Jemen", options: ["Iraq", "Jemen", "Syrië", "Egypte"], answer: "Jemen" },
+    { flag: "Bhutan", options: ["Mongolië", "Sri Lanka", "Bhutan", "Kazachstan"], answer: "Bhutan" },
+    { flag: "Lesotho", options: ["Botswana", "Sierra Leone", "Lesotho", "Somalië"], answer: "Lesotho" },
+    { flag: "Luxemburg", options: ["Nederland", "Luxemburg", "Paraguay", "Kroatië"], answer: "Luxemburg" },
+    { flag: "Noorwegen", options: ["IJsland", "Faeröer", "Denemarken", "Noorwegen"], answer: "Noorwegen" },
+    { flag: "Brunei", options: ["Saoedi-Arabië", "Pakistan", "Brunei", "Bhutan"], answer: "Brunei" },
+    { flag: "Guatemala", options: ["El Salvador", "Guatemala", "Honduras", "Nicaragua"], answer: "Guatemala" },
+    { flag: "Venezuela", options: ["Colombia", "Ecuador", "Bolivia", "Venezuela"], answer: "Venezuela" },
+    { flag: "Servië", options: ["Slowakije", "Servië", "Slovenië", "Kroatië"], answer: "Servië" },
+    { flag: "Mozambique", options: ["Kenia", "Zuid-Afrika", "Mozambique", "Zuid-Soedan"], answer: "Mozambique" },
+    { flag: "Kirgizië", options: ["Kazachstan", "Kirgizië", "Noord-Macedonië", "Turkije"], answer: "Kirgizië" },
+    { flag: "Palau", options: ["Bangladesh", "Japan", "Laos", "Palau"], answer: "Palau" },
+    { flag: "Ivoorkust", options: ["Ierland", "Nigeria", "Ivoorkust", "Italië"], answer: "Ivoorkust" },
+    { flag: "San Marino", options: ["Nicaragua", "San Marino", "El Salvador", "Honduras"], answer: "San Marino" },
+    { flag: "Andorra", options: ["Roemenië", "Moldavië", "Tsjaad", "Andorra"], answer: "Andorra" },
+    { flag: "Kaapverdië", options: ["Europese Unie", "Kaapverdië", "Kosovo", "Bosnië en Herzegovina"], answer: "Kaapverdië" },
+    
+];
+ 
+let currentQuestion = 0;
+let score = 0;
+let checks = ""
+
+function showQuestion() {
+    const vraag = vragen[currentQuestion];
+
+
+
+
+}
