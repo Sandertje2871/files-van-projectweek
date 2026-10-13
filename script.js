@@ -105,3 +105,19 @@ for (const knop of knoppen) {
     knop.addEventListener('click', function () { checkAnswer(knop); });
 }
 
+volgendevraag.addEventListener('click', function () {
+    if (currentQuestion >= vragen.length) {
+        currentQuestion = 0;
+        score = 0;
+        resultaat.textContent = "";
+        flag.style.display = "inline";
+        for (const knop of knoppen) knop.style.display = "block";
+        showQuestion();
+    } else if (currentQuestion === vragen.length - 1) {
+        showResult();
+    } else {
+        currentQuestion++;
+        showQuestion();
+    }
+});
+
