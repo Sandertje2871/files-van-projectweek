@@ -89,3 +89,14 @@ const vraag = vragen[currentQuestion];
     volgendevraag.style.display = "inline-block";
     volgendevraag.textContent = (currentQuestion === vragen.length - 1) ? "Bekijk resultaat" : "Volgende vraag";
 }
+function showResult() {
+    tekstvraag.textContent = "";
+    flag.style.display = "none";
+    for (const knop of knoppen) knop.style.display = "none";
+    checkresultaat.textContent = "";
+    scoreresultaat.textContent = "";
+    volgendevraag.textContent = "Opnieuw spelen";
+    volgendevraag.style.display = "inline-block";
+    resultaat.textContent = "Klaar! Je score is " + score + " van de " + vragen.length + ".";
+    currentQuestion = vragen.length; 
+}
