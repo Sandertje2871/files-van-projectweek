@@ -68,3 +68,15 @@ function checkAnswer(gekozenKnop) {
     if (beantwoord) return;
     beantwoord = true;
 }
+
+const vraag = vragen[currentQuestion];
+
+if (gekozenKnop.textContent === vraag.answer) {
+        gekozenKnop.className = "correct";
+        checkresultaat.textContent = "Correct!";
+        score++;
+    } else {
+        gekozenKnop.className = "incorrect";
+        checkresultaat.textContent = "Incorrect! Het juiste antwoord is: " + vraag.answer;
+    }
+    console.log("Score: " + score + " / " + (currentQuestion + 1));
