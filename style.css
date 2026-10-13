@@ -2,53 +2,45 @@ body {
   background-image: url('https://img.freepik.com/vrije-vector/alle-nationale-vlaggen-van-de-wereld-achtergrondstijl_18981-512.jpg?size=626&ext=jpg');
 }
 
-H1 {
+h1 {
   text-align: center;
+  font-size: 75px;
+  font-style:italic;
   width: 100%;
   background-color: pink;
 }
 
 p {
   text-align: center;
+  font-size: 40px;
+  font-style:italic;
   width: 100%;
   background-color: pink;
 }
 
-button {
+nav {
+  width: 100%;
+}
+
+nav ul {
+  text-align: center;
+  margin: 0 0 0 0;
+  padding-left: 0;
+}
+
+li{
+  list-style-type: none;
+}
+
+nav ul li {
+  width: 25%;
+  background: pink;
   display: block;
-  margin: 0 auto;
-  background-color: pink;
-  border: none;
+  margin: auto;
+  border: solid black 4px;
   padding: 10px 20px;
   font-size: 50px;
+  font-style: italic;
   cursor: pointer;
   justify-content: center;
-}
-
-h2 {
-  text-align: center;
-  width: 100%;
-  background-color: pink;
-}
-
-.img {
-    display: block;
-    width: 500px;
-    max-width: 100%;
-    height: auto;
-    margin: 50px auto;
-    
-}
-.choices {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 20px;
-    justify-content: center;
-    border: 3px solid black;
-    margin: 50px auto;
-    padding: 20px;
-    margin: 0;
-    font-size: 30px;
-    cursor: pointer;
-    background-color: pink;
 }
