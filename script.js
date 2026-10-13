@@ -71,12 +71,14 @@ function checkAnswer(gekozenKnop) {
 
 const vraag = vragen[currentQuestion];
 
-if (gekozenKnop.textContent === vraag.answer) {
-        gekozenKnop.className = "correct";
-        checkresultaat.textContent = "Correct!";
+    if (gekozenKnop.textContent === vraag.answer) {
         score++;
+        gekozenKnop.className = "goed";
+        checkresultaat.textContent = "Goed! ";
     } else {
-        gekozenKnop.className = "incorrect";
-        checkresultaat.textContent = "Incorrect! Het juiste antwoord is: " + vraag.answer;
+        gekozenKnop.className = "fout";
+        checkresultaat.textContent = "Fout! Het was " + vraag.answer;
+        for (const knop of knoppen) {
+            if (knop.textContent === vraag.answer) knop.className = "goed";
+        }
     }
-    console.log("Score: " + score + " / " + (currentQuestion + 1));
