@@ -10,7 +10,6 @@ const correctAnswers = [
 "Lesotho",
 "Norway",
 "Brunei",
-"Sri Lanka",
 "Guatemala",
 "Venezuela",
 "Serbia",
@@ -45,5 +44,6 @@ const selectedAnswer = button.textContent.trim();
     } else {
         button.classList.add("incorrect");
     }
-    });
+});
+
 });
