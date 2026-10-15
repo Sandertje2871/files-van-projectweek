@@ -91,8 +91,7 @@ questions.forEach(function(question, index) {
                 questions[currentQuestion].classList.add("active");
                
             } else {
-                 window.location.href="eindscherm.html";
-                 scoreDisplay.textContent = score
+                 finishGame();
             }
  
             }, 100);
