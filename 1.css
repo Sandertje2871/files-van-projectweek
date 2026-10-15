@@ -1,23 +1,27 @@
 body {
-  background: linear-gradient(to bottom, rgb(255, 182, 233), rgb(255, 165, 241));
+  background: linear-gradient(to bottom, rgb(255, 182, 233), rgb(255, 117, 234));
+  display: block;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
 h1 {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   font-style:italic;
-  width: 100%;
+  width: fit-content;
   background-color: pink;
-  margin: 10px;
+  margin: 5px;
 }
 
 h2 {
   text-align: center;
   font-size: 25px;
   font-style:italic;
-  width: 100%;
+  width: fit-content;
   background-color: pink;
-  margin: 10px;
+  margin: 5px;
 }
 
 
@@ -34,18 +38,18 @@ h2 {
     grid-template-columns: repeat(2, auto);
     gap: 10px;
     justify-content: center;
-    border: 3px solid black;
-    margin: 20px auto;
-    
+    margin: 15px auto;
+    background: transparent;
 }
 
-.choices {
+.choices button {
     padding: 20px;
     margin: 0;
     font-size: 30px;
     font-style: normal;
     cursor: pointer;
     background-color: pink;
+    border: 3px solid black;
 }
 
 .correct {
@@ -65,4 +69,12 @@ h2 {
 .choices button:active {
  
     transform: scale(0.95);
+}
+
+.question {
+    display: none;
+}
+
+.question.active {
+    display: block;
 }
