@@ -35,6 +35,7 @@ const correctAnswers = [
 
 let score = 0;
 let currentQuestion = 0;
+let gameFinished = false;
 
 questions[currentQuestion].classList.add("active");
 
