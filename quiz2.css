@@ -1,1 +1,62 @@
+body {
+  background: linear-gradient(to bottom, rgb(214, 182, 255), rgb(207, 117, 255));
+  display: block;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
 
+h1 {
+  text-align: center;
+  font-size: 40px;
+  font-style:italic;
+  width: fit-content;
+  background-color: mediumpurple;
+  margin: 5px;
+}
+
+.choices {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    justify-content: center;
+    margin: 15px auto;
+    background: transparent;
+}
+
+.choices button {
+    padding: 20px;
+    margin: 0;
+    font-size: 30px;
+    font-style: normal;
+    cursor: pointer;
+    background-color: mediumpurple;
+    border: 3px solid black;
+}
+
+.choices button.correct {
+ 
+    background-color: green;
+    border-color: rgb(0, 0, 0);
+ 
+}
+ 
+.choices button.incorrect {
+ 
+    background-color: red;
+    border-color: rgb(0, 0, 0);
+ 
+}
+ 
+.choices button:active {
+ 
+    transform: scale(0.95);
+}
+
+.question {
+    display: none;
+}
+
+.question.active {
+    display: block;
+}
