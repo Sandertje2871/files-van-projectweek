@@ -52,6 +52,7 @@ questions.forEach(function(question, index) {
                 questions[currentQuestion].classList.add("active");
                 
             } else {
+                 localStorage.setItem("finalScore", score);
                  window.location.href="eindscherm.html";
             }
 
