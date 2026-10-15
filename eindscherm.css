@@ -1,5 +1,6 @@
 body {
-  background-image: url('https://img.freepik.com/vrije-vector/alle-nationale-vlaggen-van-de-wereld-achtergrondstijl_18981-512.jpg?size=626&ext=jpg');
+  background-image: url('https://cdn.discordapp.com/attachments/1548416805180022799/1560252316320407612/ChatGPT_Image_15_okt_2026_13_25_19.png?ex=6ad209b4&is=6ad0b834&hm=6a117401c7fedfa398ba791952c8a9781dcb6955bd833716eb9ecb0da694f574');
+  background-position: top;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +13,16 @@ h1 {
   font-size: 75px;
   font-style:italic;
   width: fit-content;
-  background-color: pink;
+  background-color:rgb(190, 245, 255);
+  margin: 5px auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 50px;
+  font-style:italic;
+  width: fit-content;
+  background-color: rgb(190, 245, 255);
   margin: 5px auto;
 }
 
@@ -21,7 +31,7 @@ p {
   font-size: 40px;
   font-style:italic;
   width: fit-content;
-  background-color: pink;
+  background-color: rgb(190, 245, 255);
   margin: 15px auto;
 }
 
@@ -41,7 +51,7 @@ li{
 
 nav ul li {
   width: 25%;
-  background: pink;
+  background: rgb(190, 245, 255);
   display: block;
   margin: auto;
   border: solid black 4px;
@@ -50,12 +60,4 @@ nav ul li {
   font-style: italic;
   cursor: pointer;
   justify-content: center;
-}
-h2 {
-  text-align: center;
-  font-size: 50px;
-  font-style:italic;
-  width: fit-content;
-  background-color: pink;
-  margin: 5px auto;
 }
