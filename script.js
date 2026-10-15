@@ -1,4 +1,5 @@
 const choices = document.querySelectorAll(".choices button");
+const questions = document.querySelectorAll(".question");
 
 const correctAnswers = [
 "Luxembourg",
@@ -10,6 +11,7 @@ const correctAnswers = [
 "Lesotho",
 "Norway",
 "Brunei",
+"Sri Lanka",
 "Guatemala",
 "Venezuela",
 "Serbia",
@@ -23,7 +25,11 @@ const correctAnswers = [
 ];
 
 let score = 0;
+let currentQuestion = 0;
+
 const scoreDisplay = document.querySelector("#score");
+
+questions[currentQuestion].classList.add("active");
 
 questions.forEach(function(question, index) {
     const buttons = question.querySelectorAll("button");
@@ -53,25 +59,22 @@ questions.forEach(function(question, index) {
     });
 });
 
+
 choices.forEach(function(button) {
 button.addEventListener("click", function() {
 const selectedAnswer = button.textContent.trim();
 
-    if (
-        button.classList.contains("correct") ||
-        button.classList.contains("incorrect")
-    ) {
+    if (button.classList.contains("correct") || button.classList.contains("incorrect")) {
         return;
     }
 
     if (correctAnswers.includes(selectedAnswer)) {
         button.classList.add("correct");
 
-        score++;
+        score+1;
         scoreDisplay.textContent = score;
     } else {
         button.classList.add("incorrect");
     }
-});
-
+    });
 });
