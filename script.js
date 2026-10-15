@@ -49,6 +49,22 @@ const countdown = setInterval(function() {
     }
 }, 1000);
 
+const bgMusic = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+bgMusic.volume = 0.40;
+
+musicBtn.addEventListener("click", function () {
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.textContent = "Music ON";
+    } else {
+        bgMusic.pause();
+        musicBtn.textContent = "Music OFF";
+    }
+});
+
+
 questions[currentQuestion].classList.add("active");
 
 questions.forEach(function(question, index) {
