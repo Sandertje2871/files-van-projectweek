@@ -24,6 +24,10 @@ h2 {
   margin: 5px;
 }
  
+<<<<<<< Updated upstream
+=======
+ 
+>>>>>>> Stashed changes
 .image {
     display: block;
     width: 350px;
@@ -40,7 +44,14 @@ h2 {
     margin: 15px auto;
     background: transparent;
 }
+<<<<<<< HEAD
+ 
+=======
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> 5edb10cb7da105960243e106f94c87f396abe217
+>>>>>>> Stashed changes
 .choices button {
     padding: 20px;
     margin: 0;
@@ -69,6 +80,10 @@ h2 {
  
     transform: scale(0.95);
 }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> Stashed changes
  
 .question {
     display: none;

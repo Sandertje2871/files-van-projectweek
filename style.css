@@ -1,12 +1,19 @@
 body {
+<<<<<<< HEAD
+  background-image: url('https://img.freepik.com/vrije-vector/alle-nationale-vlaggen-van-de-wereld-achtergrondstijl_18981-512.jpg?size=626&ext=jpg%27');
+=======
   background-image: url('https://img.freepik.com/vrije-vector/alle-nationale-vlaggen-van-de-wereld-achtergrondstijl_18981-512.jpg?size=626&ext=jpg');
+<<<<<<< Updated upstream
+=======
+>>>>>>> 5edb10cb7da105960243e106f94c87f396abe217
+>>>>>>> Stashed changes
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   margin: 0;
 }
-
+ 
 h1 {
   text-align: center;
   font-size: 100px;
@@ -15,7 +22,7 @@ h1 {
   background-color: pink;
   margin: 20px auto;
 }
-
+ 
 p {
   text-align: center;
   font-size: 50px;
@@ -24,21 +31,21 @@ p {
   background-color: pink;
   margin: 20px auto;
 }
-
+ 
 nav {
   width: fit-content;
 }
-
+ 
 nav ul {
   text-align: center;
   margin: 0 0 0 0;
   padding-left: 0;
 }
-
+ 
 li{
   list-style-type: none;
 }
-
+ 
 nav ul li {
   width: fit-content;
   background: pink;
@@ -51,3 +58,4 @@ nav ul li {
   cursor: pointer;
   justify-content: center;
 }
+ 
