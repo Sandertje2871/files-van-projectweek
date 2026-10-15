@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
   margin: 0;
 }
-
+ 
 h1 {
   text-align: center;
   font-size: 40px;
@@ -14,7 +14,7 @@ h1 {
   background-color: pink;
   margin: 5px;
 }
-
+ 
 h2 {
   text-align: center;
   font-size: 25px;
@@ -23,15 +23,14 @@ h2 {
   background-color: pink;
   margin: 5px;
 }
-
-
+ 
 .image {
     display: block;
     width: 350px;
     max-width: 100%;
     height: auto;
     margin: 20px auto;
-    
+   
 }
 .choices {
     display: grid;
@@ -51,7 +50,7 @@ h2 {
     background-color: pink;
     border: 3px solid black;
 }
-
+ 
 .correct {
  
     background-color: green;
@@ -70,11 +69,11 @@ h2 {
  
     transform: scale(0.95);
 }
-
+ 
 .question {
     display: none;
 }
-
+ 
 .question.active {
     display: block;
 }
