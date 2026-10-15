@@ -1,14 +1,5 @@
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-const choices = document.querySelectorAll(".choices button");
-const questions = document.querySelectorAll(".question");
- 
-=======
->>>>>>> Stashed changes
 const questions = document.querySelectorAll(".question");
 
->>>>>>> 5edb10cb7da105960243e106f94c87f396abe217
 const correctAnswers = [
 "Luxembourg",
 "South Africa",
@@ -31,74 +22,32 @@ const correctAnswers = [
 "Andorra",
 "Cape Verde"
 ];
- 
+
 let score = 0;
 let currentQuestion = 0;
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
- 
-const scoreDisplay = document.querySelector("#score");
- 
-questions[currentQuestion].classList.add("active");
- 
-questions.forEach(function(question, index) {
-    const buttons = question.querySelectorAll("button");
- 
-    buttons.forEach(function(button) {
-        button.addEventListener("click", function() {
- 
-            const selectedAnswer = button.textContent.trim();
- 
-            if (correctAnswers[index] === selectedAnswer) {
-                score++;
-                scoreDisplay.textContent = score;
-            }
- 
-            question.classList.remove("active");
- 
-            currentQuestion++;
- 
-            if (currentQuestion < questions.length) {
-                questions[currentQuestion].classList.add("active");
-               
-=======
->>>>>>> Stashed changes
+let gameFinished = false;
 
-questions[currentQuestion].classList.add("active");
+function finishGame() {
+    if (gameFinished) {
+        return;
+    }
 
-questions.forEach(function(question, index) {
-    const buttons = question.querySelectorAll("button");
+    gameFinished = true;
+    clearInterval(countdown);
+    localStorage.setItem("finalScore", score);
+    window.location.href = "eindscherm.html";
+}
 
-    buttons.forEach(function(button) {
-        button.addEventListener("click", function() {
+const timerDisplay = document.querySelector("#timer");
+const deadline = Date.now() + 120 * 1000;
+const countdown = setInterval(function() {
+    const secondsRemaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+    timerDisplay.textContent = secondsRemaining;
 
-            const selectedAnswer = button.textContent.trim();
-
-            if (correctAnswers[index] === selectedAnswer) {
-                score++;
-            }
-
-            question.classList.remove("active");
-
-            currentQuestion++;
-
-            if (currentQuestion < questions.length) {
-                questions[currentQuestion].classList.add("active");
-                
-<<<<<<< Updated upstream
-=======
->>>>>>> 5edb10cb7da105960243e106f94c87f396abe217
->>>>>>> Stashed changes
-            } else {
-                 localStorage.setItem("finalScore", score);
-                 window.location.href="eindscherm.html";
-            }
-<<<<<<< Updated upstream
-
-        });
-    });
-});
+    if (secondsRemaining === 0) {
+        finishGame();
+    }
+}, 1000);
 
 const bgMusic = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
@@ -116,43 +65,34 @@ musicBtn.addEventListener("click", function () {
 });
 
 
+questions[currentQuestion].classList.add("active");
 
+questions.forEach(function(question, index) {
+    const buttons = question.querySelectorAll("button");
 
+    buttons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            if (gameFinished) {
+                return;
+            }
 
+            const selectedAnswer = button.textContent.trim();
 
+            if (correctAnswers[index] === selectedAnswer) {
+                score++;
+            }
 
+            question.classList.remove("active");
 
-=======
-<<<<<<< HEAD
- 
-        });
-    });
-});
- 
- 
-choices.forEach(function(button) {
-button.addEventListener("click", function() {
-const selectedAnswer = button.textContent.trim();
- 
-    if (button.classList.contains("correct") || button.classList.contains("incorrect")) {
-        return;
-    }
- 
-    if (correctAnswers.includes(selectedAnswer)) {
-        button.classList.add("correct");
- 
-        score+1;
-        scoreDisplay.textContent = score;
-    } else {
-        button.classList.add("incorrect");
-    }
-    });
-});
- 
-=======
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                questions[currentQuestion].classList.add("active");
+                
+            } else {
+                finishGame();
+            }
 
         });
     });
 });
->>>>>>> 5edb10cb7da105960243e106f94c87f396abe217
->>>>>>> Stashed changes
