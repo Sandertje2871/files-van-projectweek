@@ -92,3 +92,30 @@ h2 {
 .question.active {
     display: block;
 }
+#musicBtn {
+    background-color: pink;
+    color: purple;
+    border: 5px solid rgb(128, 0, 75);
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#musicBtn:hover {
+    background-color: pink;
+    color: white;
+    transform: scale(1.05);
+}
+#timer {
+    padding: 20px;
+    margin: 0;
+    font-size: 30px;
+    font-style: normal;
+    cursor: pointer;
+   background-color: pink;
+    color: purple;
+   
+}
