@@ -52,14 +52,14 @@ h2 {
     border: 3px solid black;
 }
 
-.correct {
+.choices button.correct {
  
     background-color: green;
     border-color: rgb(0, 0, 0);
  
 }
  
-.incorrect {
+.choices button.incorrect {
  
     background-color: red;
     border-color: rgb(0, 0, 0);
