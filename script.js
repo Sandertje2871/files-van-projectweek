@@ -69,31 +69,33 @@ questions[currentQuestion].classList.add("active");
 
 questions.forEach(function(question, index) {
     const buttons = question.querySelectorAll("button");
-
+ 
     buttons.forEach(function(button) {
         button.addEventListener("click", function() {
-            if (gameFinished) {
-                return;
-            }
-
+ 
             const selectedAnswer = button.textContent.trim();
-
+ 
             if (correctAnswers[index] === selectedAnswer) {
+                button.classList.add("correct");
                 score++;
             }
-
+            else {
+                button.classList.add("incorrect")
+            }
+ 
+            setTimeout(function() {
             question.classList.remove("active");
-
             currentQuestion++;
-
+ 
             if (currentQuestion < questions.length) {
                 questions[currentQuestion].classList.add("active");
-                
+               
             } else {
-                finishGame();
+                 window.location.href="eindscherm.html";
+                 scoreDisplay.textContent = score
             }
-
+ 
+            }, 100);
         });
     });
 });
-
