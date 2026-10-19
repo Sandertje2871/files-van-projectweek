@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(to bottom, rgb(214, 182, 255), rgb(207, 117, 255));
+  background: linear-gradient(to bottom, rgb(255, 182, 233), rgb(255, 117, 234));
   display: block;
   align-items: center;
   min-height: 100vh;
@@ -11,27 +11,43 @@ h1 {
   font-size: 40px;
   font-style:italic;
   width: fit-content;
-  background-color: mediumpurple;
+  background-color: pink;
+  margin: 5px;
+}
+h2 {
+  text-align: center;
+  font-size: 25px;
+  font-style:italic;
+  width: fit-content;
+  background-color: pink;
   margin: 5px;
 }
 
+audio {
+    width: 300px;
+    max-width: 100%;
+    margin: 20px 0;
+}
+
 .choices {
+
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
-    justify-content: center;
-    margin: 15px auto;
-    background: transparent;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 350px;
+    margin: 20px auto;
+
 }
 
 .choices button {
-    padding: 20px;
-    margin: 0;
-    font-size: 30px;
-    font-style: normal;
+
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #ffe8f4;
+    color: #7d2487;
+    font-size: 16px;
     cursor: pointer;
-    background-color: mediumpurple;
-    border: 3px solid black;
 }
 
 .choices button.correct {
@@ -47,16 +63,8 @@ h1 {
     border-color: rgb(0, 0, 0);
  
 }
- 
+
 .choices button:active {
  
     transform: scale(0.95);
-}
-
-.question {
-    display: none;
-}
-
-.question.active {
-    display: block;
 }
