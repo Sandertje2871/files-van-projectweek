@@ -1,77 +1,223 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>guessthelanguage</title>
+    <title>guess the language</title>
     <link rel="stylesheet" href="quiz2.css">
 </head>
 <body>
-    <div class=titel>
-        <h1>Guess the language?</h1>
-    </div>
-
-<div class="question">
-
+    <h1>Guess the language?</h1>
+ <h2>Time remaining: <span id="timer">180</span> seconds</h2>
+    <div class="audio-box">
+    <audio controls>
+        <source src="spanish.mp3" type="audio/mpeg">
+    </audio>
     <div class="choices">
-        <button class="choices">Czeck</button>
-        <button class="choices">Slovak</button>
-        <button class="choices">Polish</button>
-        <button class="choices">Ukrainian</button>
+        <button>Portuguese</button>
+        <button>Italian</button>
+        <button>Spanish</button>
+        <button>Catalan</button>
     </div>
-</div>
-
-<div class="question">
-
+    <p id="result"></p>
+    <div class="audio-box">
+    <audio controls>
+        <source src="polish.mp3" type="audio/mpeg">
+    </audio>
     <div class="choices">
-        <button class="choices">Latvian</button>
-        <button class="choices">Lithuanian</button>
-        <button class="choices">Old Prussian</button>
-        <button class="choices">Belarusian</button>
+        <button>Ukrainian</button>
+        <button>Slovak</button>
+        <button>Russian</button>
+        <button>Polish</button>
     </div>
-</div>
-
-<div class="question">
-
+    <p id="result"></p>
+    <div class="audio-box">
+    <audio controls>
+        <source src="arabic.mp3" type="audio/mpeg">
+    </audio>
     <div class="choices">
-        <button class="choices">Swedish</button>
-        <button class="choices">Danish</button>
-        <button class="choices">Norwegian</button>
-        <button class="choices">Faroese</button>
+        <button>Persian</button>
+        <button>Tamazight</button>
+        <button>Arabic</button>
+        <button>Darija</button>
     </div>
-</div>
-
-<div class="question">
-
+    <p id="result"></p>
+<div class="audio-box">
+    <audio controls>
+        <source src="urdu.mp3" type="audio/mpeg">
+    </audio>
     <div class="choices">
-        <button class="choices">Catalan</button>
-        <button class="choices">French</button>
-        <button class="choices">Walloon</button>
-        <button class="choices">Occitan</button>
+        <button>Hindi</button>
+        <button>Urdu</button>
+        <button>Punjabi</button>
+        <button>Tamil</button>
     </div>
-</div>
-
-<div class="question">
-
+    <p id="result"></p>
+<div class="audio-box">
+    <audio controls>
+        <source src="Lithuanian.mp3" type="audio/mpeg">
+    </audio>
     <div class="choices">
-        <button class="choices">Russian</button>
-        <button class="choices">Ukrainian</button>
-        <button class="choices">Belarushian</button>
-        <button class="choices">Marcedonian</button>
+        <button>Lithuanian</button>
+        <button>Latvian</button>
+        <button>Belarusian</button>
+        <button>Czech</button>
     </div>
-</div>
-
-<div class="question">
-
+    <p id="result"></p>
+<div class="audio-box">
+    <audio controls>
+        <source src="chinese.mp3" type="audio/mpeg">
+    </audio>
     <div class="choices">
-        <button class="choices">Tibetan</button>
-        <button class="choices">Chinese</button>
-        <button class="choices">Korean</button>
-        <button class="choices">Japanese</button>
+        <button>Korean</button>
+        <button>Japanese</button>
+        <button>Vietnamese</button>
+        <button>Chinese</button>
     </div>
+    <p id="result"></p>
+    <div class="audio-box">
+    <audio controls>
+        <source src="turkish.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Turkmen</button>
+        <button>Uzbek</button>
+        <button>Turkish</button>
+        <button>Azerbaijani</button>
+    </div>
+    <p id="result"></p>
+    <div class="audio-box">
+    <audio controls>
+        <source src="german.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Dutch</button>
+        <button>Luxembourgish</button>
+        <button>German</button>
+        <button>Afrikaans</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="french.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Romanian</button>
+        <button>French</button>
+        <button>Italian</button>
+        <button>Haitian Creole</button>
+    </div>
+    <p id="result"></p>
+     <audio controls>
+        <source src="swahili.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Swahili</button>
+        <button>Luganda</button>
+        <button>Kikuyu</button>
+        <button>Zulu</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="thai.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Lao</button>
+        <button>Mandarin</button>
+        <button>Burmese</button>
+        <button>Thai</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="bengali.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Odia</button>
+        <button>Bengali</button>
+        <button>Nepali</button>
+        <button>Thai</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="japanese.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Nepali</button>
+        <button>Chinese</button>
+        <button>Japanese</button>
+        <button>Korean</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="italian.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Italian</button>
+        <button>Spanish</button>
+        <button>Portuguese</button>
+        <button>French</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="russain.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Ukrainian</button>
+        <button>Belarusian</button>
+        <button>Russian</button>
+        <button>Serbian</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="Czech.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Czech</button>
+        <button>Slovenian</button>
+        <button>Croatian</button>
+        <button>Slovak</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="portuguese.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Italian</button>
+        <button>Spanish</button>
+        <button>Arabic</button>
+        <button>Portuguese</button>
+    </div>
+    <p id="result"></p>
+     <audio controls>
+        <source src="indonesian.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Malay</button>
+        <button>Indonesian</button>
+        <button>Thai</button>
+        <button>Filipino</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="swedish.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Norwegian</button>
+        <button>Danish</button>
+        <button>Swedish</button>
+        <button>Icelandic</button>
+    </div>
+    <p id="result"></p>
+    <audio controls>
+        <source src="somali.mp3" type="audio/mpeg">
+    </audio>
+    <div class="choices">
+        <button>Arabic</button>
+        <button>Swahili</button>
+        <button>Somali</button>
+        <button>Surinamese</button>
+    </div>
+    <p id="result"></p>
+    <script src="quiz2.js"></script>
 </div>
-
-
-    <script type="module" src="quiz2.js"></script>
 </body>
 </html>
