@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(to bottom, rgb(255, 182, 233), rgb(255, 117, 234));
+  background: linear-gradient(to bottom, rgb(214, 182, 255), rgb(207, 117, 255));
   display: block;
   align-items: center;
   min-height: 100vh;
@@ -11,7 +11,7 @@ h1 {
   font-size: 40px;
   font-style:italic;
   width: fit-content;
-  background-color: pink;
+  background-color: mediumpurple;
   margin: 5px;
 }
 h2 {
@@ -19,7 +19,7 @@ h2 {
   font-size: 25px;
   font-style:italic;
   width: fit-content;
-  background-color: pink;
+  background-color: mediumpurple;
   margin: 5px;
 }
 
@@ -44,8 +44,8 @@ audio {
     padding: 14px;
     border: none;
     border-radius: 12px;
-    background: #ffe8f4;
-    color: #7d2487;
+    background: mediumpurple;
+    border: 3px solid black;
     font-size: 16px;
     cursor: pointer;
 }
@@ -53,18 +53,26 @@ audio {
 .choices button.correct {
  
     background-color: green;
-    border-color: rgb(0, 0, 0);
+    border-color: black;
  
 }
  
 .choices button.incorrect {
  
     background-color: red;
-    border-color: rgb(0, 0, 0);
+    border-color: black;
  
 }
 
 .choices button:active {
  
     transform: scale(0.95);
+}
+
+.question {
+    display: none;
+}
+
+.question.active {
+    display: block;
 }
