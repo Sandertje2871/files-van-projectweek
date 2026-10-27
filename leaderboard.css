@@ -37,7 +37,7 @@
 }
 
 .score-entry button {
-    background: #e8d2fa;
+    background: rgba(224, 250, 255, 0.94);
     color: #321b46;
     font-weight: 600;
     cursor: pointer;
@@ -46,7 +46,7 @@
 
 .score-entry button:hover {
     transform: translateY(-1px);
-    background: #d7b4f2;
+    background: #ffffff;
 }
 
 .score-entry #leaderboard-status:empty {
