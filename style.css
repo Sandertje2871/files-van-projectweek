@@ -1,5 +1,6 @@
 body {
-  background-image: url('https://img.freepik.com/vrije-vector/alle-nationale-vlaggen-van-de-wereld-achtergrondstijl_18981-512.jpg?size=626&ext=jpg');
+  background-image: url('https://cdn.discordapp.com/attachments/1548416805180022799/1560252316320407612/ChatGPT_Image_15_okt_2026_13_25_19.png?ex=6ad209b4&is=6ad0b834&hm=6a117401c7fedfa398ba791952c8a9781dcb6955bd833716eb9ecb0da694f574');
+  background-position: top;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,13 +8,21 @@ body {
   margin: 0;
 }
 
+.body {
+  display:inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  background-color: rgb(190, 245, 255);
+  margin: auto;
+}
+
 h1 {
   text-align: center;
-  font-size: 100px;
+  font-size: 65px;
   font-style: italic;
   width: fit-content;
-  background-color: pink;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 p {
@@ -21,8 +30,7 @@ p {
   font-size: 50px;
   font-style: italic;
   width: fit-content;
-  background-color: pink;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 nav {
@@ -30,7 +38,6 @@ nav {
 }
 
 nav ul {
-  text-align: center;
   margin: 0 0 0 0;
   padding-left: 0;
 }
@@ -40,15 +47,15 @@ li{
 }
 
 nav ul li {
+  text-align: center;
   width: fit-content;
-  background: pink;
+  background: rgb(190, 245, 255);
   display: block;
   margin: auto;
   border: solid black 4px;
   padding: 10px 20px;
-  font-size: 60px;
+  font-size: 50px;
   font-style: italic;
   cursor: pointer;
   justify-content: center;
 }
- 
