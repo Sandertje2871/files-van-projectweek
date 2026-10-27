@@ -21,7 +21,7 @@ const correctAnswers = [
 "Portuguese",
 "Indonesian",
 "Swedish",
-"Somali"
+"Filipino"
 ]
 
 // Variabelen voor score, huidige vraag en spelstatus
