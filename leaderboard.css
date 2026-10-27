@@ -1,0 +1,102 @@
+.score-entry {
+    box-sizing: border-box;
+    width: fit-content;
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 10px 25px;
+    background-color: rgb(190, 245, 255);
+    border: solid black 4px;
+    font-style: italic;
+}
+
+.score-entry form {
+    text-align: center;
+    font-size: 22px;
+}
+
+.score-entry input,
+.score-entry button {
+    margin: 5px;
+    padding: 8px;
+    font-size: 18px;
+}
+
+.score-entry #leaderboard-status:empty {
+    display: none;
+}
+
+.score-entry #leaderboard-status {
+    margin: 10px auto;
+    font-size: 20px;
+}
+
+.leaderboard-page {
+    width: min(100% - 24px, 1100px);
+    margin: 24px auto;
+}
+
+#reset-leaderboard {
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+    padding: 4px 8px;
+    background-color: rgb(190, 245, 255);
+    border: solid black 2px;
+    font-family: inherit;
+    font-style: italic;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.leaderboard-page h1 {
+    padding: 8px 20px;
+    background-color: rgb(190, 245, 255);
+}
+
+.leaderboard-page nav {
+    width: 100%;
+}
+
+.leaderboard-page nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.leaderboard-page nav ul li {
+    width: auto;
+    margin: 0;
+    padding: 8px 16px;
+    font-size: 24px;
+}
+
+.leaderboard-page nav ul li a {
+    color: inherit;
+}
+
+.leaderboard-boards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 20px;
+}
+
+.leaderboard-board {
+    box-sizing: border-box;
+    padding: 10px 24px;
+    background-color: rgb(190, 245, 255);
+    border: solid black 4px;
+    font-style: italic;
+}
+
+.leaderboard-board h2 {
+    margin: 5px auto;
+    font-size: clamp(28px, 4vw, 40px);
+    text-align: center;
+}
+
+.leaderboard-board ol {
+    padding-left: 40px;
+    font-size: 26px;
+}
