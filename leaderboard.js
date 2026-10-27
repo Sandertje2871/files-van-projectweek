@@ -3,6 +3,41 @@ const leaderboardForm = document.querySelector("#leaderboard-form");
 const leaderboardStatus = document.querySelector("#leaderboard-status");
 const resetLeaderboardButton = document.querySelector("#reset-leaderboard");
 const quizIds = ["quiz1", "quiz2"];
+
+function getScores(quizId) {
+    let scores = [];
+    const savedCount = localStorage.getItem(quizId + "LeaderboardCount");
+
+    if (savedCount !== null) {
+        let plek = 0;
+        while (plek < Number(savedCount)) {
+            const name = localStorage.getItem(quizId + "LeaderboardName" + plek);
+            const scoreText = localStorage.getItem(quizId + "LeaderboardScore" + plek);
+            const score = Number(scoreText);
+            if (name && scoreText !== null && Number.isFinite(score) && score >= 0) {
+                scores.push({ name: name, score: score });
+            }
+            plek++;
+        }
+    } else {
+        let plek = 0;
+        while (plek < 5) {
+            const name = localStorage.getItem(quizId + "LeaderboardName" + plek);
+            const scoreText = localStorage.getItem(quizId + "LeaderboardScore" + plek);
+            const score = Number(scoreText);
+            if (name && scoreText !== null && Number.isFinite(score) && score >= 0) {
+                scores.push({ name: name, score: score });
+            }
+            plek++;
+        }
+    }
+
+    scores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+    return scores;
+}
+
 // Functie om de scores weer te geven op de leaderboard-pagina
 function showScores() {
     quizIds.forEach(function(quizId) {
@@ -10,27 +45,36 @@ function showScores() {
         if (!leaderboardList) {
             return;
         }
+        const playerRank = document.querySelector("#" + quizId + "-player-rank");
         // Maak de lijst leeg voordat je de scores weergeeft
         leaderboardList.textContent = "";
-        let plek = 0;
-        // Loop door de top 5 scores en voeg ze toe aan de lijst
-        while (plek < 5) {
-            const naam = localStorage.getItem(quizId + "LeaderboardName" + plek);
-            const score = localStorage.getItem(quizId + "LeaderboardScore" + plek);
-            // Controleer of de naam en score geldig zijn voordat je ze toevoegt aan de lijst
-            if (naam && score !== null) {
-                const entry = document.createElement("li");
-                entry.textContent = naam + " - " + score + "/20";
-                leaderboardList.appendChild(entry);
-            }
-            
-            plek++;
-        }
+        const scores = getScores(quizId);
+
+        scores.slice(0, 5).forEach(function(result, index) {
+            const entry = document.createElement("li");
+            entry.value = index + 1;
+            entry.textContent = result.name + " " + result.score + "/20";
+            leaderboardList.appendChild(entry);
+        });
+
         // Als er geen scores zijn, geef een bericht weer dat er nog geen scores zijn
         if (leaderboardList.children.length === 0) {
             const emptyMessage = document.createElement("li");
             emptyMessage.textContent = "No scores yet.";
             leaderboardList.appendChild(emptyMessage);
+        }
+        // Toon de rang van de speler als deze aanwezig is in de leaderboard
+        if (playerRank) {
+            const latestRank = Number(localStorage.getItem(quizId + "LatestLeaderboardRank"));
+            const latestName = localStorage.getItem(quizId + "LatestLeaderboardName");
+            const latestScore = localStorage.getItem(quizId + "LatestLeaderboardScore");
+            playerRank.hidden = true;
+            // Als de speler een rang heeft en deze hoger is dan 5, toon de rang en score van de speler
+            if (latestName && latestScore !== null && latestRank > 5) {
+                playerRank.textContent = "Your place: " + latestRank + ". " +
+                    latestName + " " + latestScore + "/20.";
+                playerRank.hidden = false;
+            }
         }
     });
 }
@@ -39,11 +83,17 @@ if (resetLeaderboardButton) {
     resetLeaderboardButton.addEventListener("click", function() {
         quizIds.forEach(function(quizId) {
             let plek = 0;
-            while (plek < 5) {
+            const savedCount = Number(localStorage.getItem(quizId + "LeaderboardCount")) || 5;
+            while (plek < savedCount) {
                 localStorage.removeItem(quizId + "LeaderboardName" + plek);
                 localStorage.removeItem(quizId + "LeaderboardScore" + plek);
                 plek++;
             }
+            // Verwijder de tijdelijke scoregegevens uit localStorage
+            localStorage.removeItem(quizId + "LeaderboardCount");
+            localStorage.removeItem(quizId + "LatestLeaderboardRank");
+            localStorage.removeItem(quizId + "LatestLeaderboardName");
+            localStorage.removeItem(quizId + "LatestLeaderboardScore");
         });
 
         showScores();
@@ -70,36 +120,22 @@ if (leaderboardForm) {
             leaderboardStatus.textContent = "Enter your name to save your score.";
             return;
         }
-        // Haal de bestaande scores op uit localStorage en voeg de nieuwe score toe, sorteer ze en sla de top 5 scores op
-        const scores = [];
-        let aantalScores = 0;
-        while (aantalScores < 5) {
-            const oudeNaam = localStorage.getItem(quizId + "LeaderboardName" + aantalScores);
-            const oudeScoreTekst = localStorage.getItem(quizId + "LeaderboardScore" + aantalScores);
-            const oudeScore = Number(oudeScoreTekst);
-            // Controleer of de oude naam en score geldig zijn voordat je ze toevoegt aan de lijst van scores
-            if (oudeNaam && oudeScoreTekst !== null && Number.isFinite(oudeScore) && oudeScore >= 0) {
-                scores.push({ name: oudeNaam, score: oudeScore });
-            }
-
-            aantalScores++;
-        }
+        // Haal alle bestaande scores op, voeg de nieuwe score toe en sorteer ze.
+        const scores = getScores(quizId);
         // Voeg de nieuwe score toe aan de lijst van scores
-        scores.push({ name: naam, score: score });
+        const newScore = { name: naam, score: score };
+        scores.push(newScore);
         scores.sort(function(a, b) {
             return b.score - a.score;
         });
-        // Beperk de lijst tot de top 5 scores
+        localStorage.setItem(quizId + "LeaderboardCount", scores.length);
+        localStorage.setItem(quizId + "LatestLeaderboardRank", scores.indexOf(newScore) + 1);
+        localStorage.setItem(quizId + "LatestLeaderboardName", naam);
+        localStorage.setItem(quizId + "LatestLeaderboardScore", score);
         let opslagPlek = 0;
-        while (opslagPlek < 5) {
-            if (opslagPlek < scores.length) {
-                localStorage.setItem(quizId + "LeaderboardName" + opslagPlek, scores[opslagPlek].name);
-                localStorage.setItem(quizId + "LeaderboardScore" + opslagPlek, scores[opslagPlek].score);
-            } else {
-                localStorage.removeItem(quizId + "LeaderboardName" + opslagPlek);
-                localStorage.removeItem(quizId + "LeaderboardScore" + opslagPlek);
-            }
-
+        while (opslagPlek < scores.length) {
+            localStorage.setItem(quizId + "LeaderboardName" + opslagPlek, scores[opslagPlek].name);
+            localStorage.setItem(quizId + "LeaderboardScore" + opslagPlek, scores[opslagPlek].score);
             opslagPlek++;
         }
         // Verwijder de tijdelijke scoregegevens uit localStorage en verberg het leaderboardformulier, toon een statusbericht en werk de weergegeven scores bij
