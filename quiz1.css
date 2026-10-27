@@ -6,19 +6,9 @@ body {
   margin: 0;
 }
 
-.home-button {
-  display: inline-block;
-  margin: 5px;
-  padding: 5px 5px;
-  background-color: pink;
-  border: 3px solid rgb(128, 0, 75);
-  border-radius: 12px;
-  color: purple;
-  font-weight: bold;
-  text-decoration: none;
-}
 
 .home-button:hover {
+  background-color: pink;
   color: white;
   transform: scale(1.05);
 }
@@ -29,7 +19,7 @@ h1 {
   font-style:italic;
   width: fit-content;
   background-color: pink;
-  margin: 5px;
+  margin: 5px auto;
 }
 
 h2 {
@@ -38,7 +28,7 @@ h2 {
   font-style:italic;
   width: fit-content;
   background-color: pink;
-  margin: 5px;
+  margin: 5px auto;
 }
 
 
@@ -96,19 +86,35 @@ h2 {
     display: block;
 }
 #musicBtn {
+    position: absolute;
+    top: 50px;
     background-color: pink;
+    text-align: 50px;
     color: purple;
-    border: 5px solid rgb(128, 0, 75);
+    border: 3px solid rgb(128, 0, 75);
     border-radius: 15px;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.5s;
+    margin: 10px;
 }
 
 #musicBtn:hover {
     background-color: pink;
     color: white;
     transform: scale(1.05);
+}
+
+.home-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 16px;
+  background-color: pink;
+  border: 3px solid rgb(128, 0, 75);
+  border-radius: 12px;
+  color: purple;
+  font-weight: bold;
+  text-decoration: none;
 }
