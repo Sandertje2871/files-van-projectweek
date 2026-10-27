@@ -1,6 +1,9 @@
 body {
   box-sizing: border-box;
-  background: linear-gradient(145deg, #f8d7f0, #d9b8f5);
+  background-image: url('https://cdn.discordapp.com/attachments/1548416805180022799/1560252316320407612/ChatGPT_Image_15_okt_2026_13_25_19.png?ex=6ad209b4&is=6ad0b834&hm=6a117401c7fedfa398ba791952c8a9781dcb6955bd833716eb9ecb0da694f574');
+  background-position: top;
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +19,7 @@ body {
   box-sizing: border-box;
   width: min(100%, 720px);
   padding: clamp(24px, 6vw, 48px);
-  background: rgba(248, 239, 255, 0.94);
+  background: rgba(224, 250, 255, 0.94);
   border: 1px solid rgba(92, 48, 119, 0.2);
   border-radius: 22px;
   box-shadow: 0 12px 32px rgba(50, 27, 70, 0.18);
@@ -36,7 +39,7 @@ body {
   width: auto;
   margin: 8px auto 20px;
   background: transparent;
-  color: #56336b;
+  color: #087c9d;
   font-size: clamp(20px, 4vw, 28px);
   text-align: center;
 }
@@ -45,7 +48,7 @@ body {
   width: fit-content;
   margin: 0 auto;
   padding: 10px 20px;
-  background: #e8d2fa;
+  background: rgba(224, 250, 255, 0.94);
   border-radius: 12px;
   color: #48245e;
   font-size: clamp(22px, 5vw, 34px);
@@ -70,7 +73,7 @@ body > nav ul li {
   width: 100%;
   margin: 0;
   padding: 12px 16px;
-  background: #f2e5ff;
+  background: rgba(224, 250, 255, 0.94);
   border: 1px solid #9c68bf;
   border-radius: 10px;
   font-size: clamp(18px, 4vw, 22px);
@@ -81,7 +84,7 @@ body > nav ul li {
 
 body > nav ul li:hover {
   transform: translateY(-2px);
-  background: #d7b4f2;
+  background: #ffffff;
 }
 
 body > nav ul li a {
@@ -92,4 +95,8 @@ body > nav ul li a {
 body > nav ul li a:focus-visible {
   outline: 3px solid #6c3e8b;
   outline-offset: 4px;
+}
+
+body > .score-entry {
+  background: rgba(224, 250, 255, 0.94);
 }
