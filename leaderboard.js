@@ -3,35 +3,38 @@ const leaderboardForm = document.querySelector("#leaderboard-form");
 const leaderboardStatus = document.querySelector("#leaderboard-status");
 const resetLeaderboardButton = document.querySelector("#reset-leaderboard");
 const quizIds = ["quiz1", "quiz2"];
-
+// Functie om de scores op te halen uit localStorage voor een specifieke quiz
 function getScores(quizId) {
     let scores = [];
     const savedCount = localStorage.getItem(quizId + "LeaderboardCount");
-
+    // Als er een opgeslagen scorecount is, gebruik deze om de scores op te halen, anders gebruik een standaardwaarde van 5
     if (savedCount !== null) {
         let plek = 0;
         while (plek < Number(savedCount)) {
             const name = localStorage.getItem(quizId + "LeaderboardName" + plek);
             const scoreText = localStorage.getItem(quizId + "LeaderboardScore" + plek);
             const score = Number(scoreText);
+            // Controleer of de naam en score geldig zijn voordat je ze toevoegt aan de scores-array
             if (name && scoreText !== null && Number.isFinite(score) && score >= 0) {
                 scores.push({ name: name, score: score });
             }
             plek++;
         }
+        // Als er geen opgeslagen scorecount is, gebruik een standaardwaarde van 5 om de scores op te halen
     } else {
         let plek = 0;
         while (plek < 5) {
             const name = localStorage.getItem(quizId + "LeaderboardName" + plek);
             const scoreText = localStorage.getItem(quizId + "LeaderboardScore" + plek);
             const score = Number(scoreText);
+            // Controleer of de naam en score geldig zijn voordat je ze toevoegt aan de scores-array
             if (name && scoreText !== null && Number.isFinite(score) && score >= 0) {
                 scores.push({ name: name, score: score });
             }
             plek++;
         }
     }
-
+// Sorteer de scores in aflopende volgorde op basis van de score voordat je ze retourneert
     scores.sort(function(a, b) {
         return b.score - a.score;
     });
