@@ -100,3 +100,16 @@
     padding-left: 40px;
     font-size: 26px;
 }
+
+.leaderboard-board ol li {
+    list-style-type: decimal;
+}
+
+.player-rank {
+    margin: 20px 0 5px;
+    padding: 10px 14px;
+    background-color: white;
+    border: solid black 2px;
+    font-size: 22px;
+    text-align: center;
+}
