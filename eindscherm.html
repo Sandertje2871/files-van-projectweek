@@ -3,22 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eindsscherm</title>
+    <title>End page</title>
     <link rel="stylesheet" href="eindscherm.css">
+    <link rel="stylesheet" href="leaderboard.css">
 </head>
 <body>
     <div class="body">
         <h1>You finished!</h1>
         <p>Choose an option below:</p>
-        <h2>Eindscore: <span id="final-score">0</span></h2>
+        <h2>final score: <span id="final-score">0</span></h2>
     </div>
 
     <nav>
         <ul>
             <li><a href="index.html">Homescreen</a></li>
-            <li><a href="1.html">Play again</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
         </ul>
     </nav>
+    <section class="score-entry" aria-label="Save your score">
+        <form id="leaderboard-form" hidden>
+            <label for="player-name">Your name:</label>
+            <input id="player-name" name="player-name" type="text" maxlength="24" autocomplete="nickname" required>
+            <button type="submit">Save score</button>
+        </form>
+        <p id="leaderboard-status" role="status"></p>
+    </section>
+    <script src="leaderboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
     <script src="eindscherm.js"></script>
 </body>
 </html>
