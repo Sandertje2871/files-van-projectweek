@@ -1,120 +1,139 @@
 body {
   background: linear-gradient(to bottom, rgb(255, 182, 233), rgb(255, 117, 234));
   display: block;
-  align-items: center;
   min-height: 100vh;
   margin: 0;
+  padding-bottom: 32px;
+  color: #3d1740;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-
 .home-button:hover {
-  background-color: pink;
-  color: white;
+  background-color: #e85db1;
+  color: #fff;
   transform: scale(1.05);
 }
 
 h1 {
   text-align: center;
-  font-size: 40px;
-  font-style:italic;
+  font-size: clamp(30px, 6vw, 42px);
+  font-style: italic;
   width: fit-content;
+  margin: 12px auto 6px;
+  padding: 4px 12px;
   background-color: pink;
-  margin: 5px auto;
+  color: #571c50;
 }
 
 h2 {
   text-align: center;
-  font-size: 25px;
-  font-style:italic;
+  font-size: clamp(18px, 4vw, 24px);
+  font-style: italic;
   width: fit-content;
+  margin: 6px auto;
+  padding: 4px 12px;
   background-color: pink;
-  margin: 5px auto;
+  color: #66325e;
 }
-
 
 .image {
-    display: block;
-    width: 350px;
-    max-width: 100%;
-    height: auto;
-    margin: 20px auto;
-    
-}
-.choices {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
-    justify-content: center;
-    margin: 15px auto;
-    background: transparent;
-}
-
-.choices button {
-    padding: 20px;
-    margin: 0;
-    font-size: 30px;
-    font-style: normal;
-    cursor: pointer;
-    background-color: pink;
-    border: 3px solid black;
-}
-
-.choices button.correct {
- 
-    background-color: green;
-    border-color: rgb(0, 0, 0);
- 
-}
- 
-.choices button.incorrect {
- 
-    background-color: red;
-    border-color: rgb(0, 0, 0);
- 
-}
- 
-.choices button:active {
- 
-    transform: scale(0.95);
+  display: block;
+  width: 380px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 .question {
-    display: none;
+  display: none;
 }
 
 .question.active {
-    display: block;
+  display: block;
+  width: 100%;
+  margin: 20px auto;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
+
+.question > .choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100% - 32px, 600px);
+  margin: 18px auto;
+}
+
+.choices button {
+  padding: 16px 12px;
+  border: 2px solid #571c50;
+  border-radius: 8px;
+  background-color: pink;
+  color: #4a1f43;
+  font: inherit;
+  font-size: clamp(20px, 4vw, 26px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.choices button:hover {
+  transform: translateY(-2px);
+  background-color: #f08ac5;
+}
+
+.choices button.correct {
+  background-color: #4b9b66;
+  border-color: #36794d;
+  color: white;
+}
+
+.choices button.incorrect {
+  background-color: #cf5264;
+  border-color: #a63c4d;
+  color: white;
+}
+
+.choices button:active {
+  transform: scale(0.97);
+}
+
 #musicBtn {
-    position: absolute;
-    top: 50px;
-    background-color: pink;
-    text-align: 50px;
-    color: purple;
-    border: 3px solid rgb(128, 0, 75);
-    border-radius: 15px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.5s;
-    margin: 10px;
+  display: block;
+  margin: 12px auto;
+  padding: 9px 16px;
+  background-color: #ffe0f2;
+  color: #571c50;
+  border: 1px solid #d87ab8;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
 }
 
 #musicBtn:hover {
-    background-color: pink;
-    color: white;
-    transform: scale(1.05);
+  background-color: #f5b5dc;
+  transform: translateY(-1px);
 }
 
 .home-button {
   display: inline-block;
-  margin: 10px;
-  padding: 10px 16px;
-  background-color: pink;
-  border: 3px solid rgb(128, 0, 75);
-  border-radius: 12px;
-  color: purple;
+  margin: 12px;
+  padding: 9px 14px;
+  background-color: #ffe0f2;
+  border: 1px solid #d87ab8;
+  border-radius: 10px;
+  color: #571c50;
   font-weight: bold;
   text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+@media (max-width: 420px) {
+  .question > .choices {
+    grid-template-columns: 1fr;
+  }
 }
