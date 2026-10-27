@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="leaderboard.css">
+</head>
+<body>
+    <main class="leaderboard-page">
+        <h1>Leaderboard</h1>
+        <button id="reset-leaderboard" type="button">Reset leaderboard</button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Homescreen</a></li>
+            </ul>
+        </nav>
+        <div class="leaderboard-boards">
+            <section class="leaderboard-board" aria-labelledby="quiz1-leaderboard-title">
+                <h2 id="quiz1-leaderboard-title">Guess the flag</h2>
+                <ol id="quiz1-leaderboard-list"></ol>
+            </section>
+            <section class="leaderboard-board" aria-labelledby="quiz2-leaderboard-title">
+                <h2 id="quiz2-leaderboard-title">Guess the language</h2>
+                <ol id="quiz2-leaderboard-list"></ol>
+            </section>
+        </div>
+    </main>
+    <script src="leaderboard.js"></script>
+</body>
+</html>
