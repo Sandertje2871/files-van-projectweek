@@ -1,94 +1,117 @@
 body {
   background: linear-gradient(to bottom, rgb(214, 182, 255), rgb(232, 117, 255));
   display: block;
-  align-items: center;
   min-height: 100vh;
   margin: 0;
+  padding-bottom: 32px;
+  color: #321b46;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 .home-button {
-    display: inline-block;
-    margin: 5px;
-    padding: 5px 5px;
-    background: rgb(178, 112, 216);
-    border: 3px solid black;
-    border-radius: 12px;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
+  display: inline-block;
+  margin: 12px;
+  padding: 9px 14px;
+  background: #f2e5ff;
+  border: 1px solid #9c68bf;
+  border-radius: 10px;
+  color: #321b46;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .home-button:hover {
-    transform: scale(1.05);
+  background-color: #d7b4f2;
+  color: #fff;
+  transform: scale(1.03);
 }
 
 h1 {
   text-align: center;
-  font-size: 40px;
-  font-style:italic;
-  width: fit-content;
-  background-color:  rgb(178, 112, 216);
-  margin: 5px;
+  font-size: clamp(30px, 6vw, 42px);
+  margin: 12px auto 6px;
+  color: #48245e;
 }
+
 h2 {
   text-align: center;
-  font-size: 25px;
-  font-style:italic;
-  width: fit-content;
-  background-color: rgb(178, 112, 216);
-  margin: 5px;
+  font-size: clamp(18px, 4vw, 24px);
+  margin: 6px auto;
+  color: #56336b;
 }
 
 audio {
-    width: 300px;
-    max-width: 100%;
-    margin: 20px 0;
+  display: block;
+  width: 300px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .choices {
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    max-width: 350px;
-    margin: 20px auto;
-
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: min(100%, 380px);
+  margin: 16px auto 0;
 }
 
 .choices button {
+  padding: 12px;
+  border: 1px solid #9c68bf;
+  border-radius: 10px;
+  background: #f2e5ff;
+  color: #321b46;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
 
-    padding: 14px;
-    border: none;
-    border-radius: 12px;
-    background: rgb(178, 112, 216);
-    border: 3px solid black;
-    font-size: 16px;
-    cursor: pointer;
+.choices button:hover {
+  transform: translateY(-2px);
+  background: #d7b4f2;
 }
 
 .choices button.correct {
- 
-    background-color: green;
-    border-color: black;
- 
+  background-color: #4b9b66;
+  border-color: #36794d;
+  color: white;
 }
- 
+
 .choices button.incorrect {
- 
-    background-color: red;
-    border-color: black;
- 
+  background-color: #cf5264;
+  border-color: #a63c4d;
+  color: white;
 }
 
 .choices button:active {
- 
-    transform: scale(0.95);
+  transform: scale(0.97);
 }
 
 .question {
-    display: none;
+  display: none;
 }
 
 .question.active {
-    display: block;
+  display: block;
+  box-sizing: border-box;
+  width: min(100% - 32px, 520px);
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(248, 239, 255, 0.94);
+  border: 1px solid rgba(92, 48, 119, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(50, 27, 70, 0.16);
+}
+
+@media (max-width: 420px) {
+  .question.active {
+    padding: 14px;
+  }
+
+  .choices {
+    grid-template-columns: 1fr;
+  }
 }
