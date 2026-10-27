@@ -87,9 +87,11 @@ questions.forEach(function(question, index) {
             if (correctAnswers[index] === selectedAnswer) {
                 button.classList.add("correct");
                 score++;
+                button.disabled = true;
             }
             else {
                 button.classList.add("incorrect")
+                button.disabled = true;
             }
             // Markeer de vraag als beantwoord
             setTimeout(function() {
@@ -103,7 +105,7 @@ questions.forEach(function(question, index) {
                  finishGame();
             }
  
-            }, 100);
+            }, 500);
         });
     });
 });
