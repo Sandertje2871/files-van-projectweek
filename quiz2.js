@@ -11,6 +11,7 @@ const correctAnswers = [
 "Turkish",
 "German",
 "French",
+"English",
 "Thai",
 "Bengali",
 "Japanese",
@@ -20,8 +21,7 @@ const correctAnswers = [
 "Portuguese",
 "Indonesian",
 "Swedish",
-"Filipino",
-"English"
+"Filipino"
 ]
 
 // Variabelen voor score, huidige vraag en spelstatus
