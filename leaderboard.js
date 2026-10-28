@@ -52,11 +52,11 @@ function showScores() {
         // Maak de lijst leeg voordat je de scores weergeeft
         leaderboardList.textContent = "";
         const scores = getScores(quizId);
-
+        // Voeg de top 5 scores toe aan de leaderboard-lijst
         scores.slice(0, 5).forEach(function(result, index) {
             const entry = document.createElement("li");
             entry.value = index + 1;
-            entry.textContent = result.name + " " + result.score + "/20";
+            entry.textContent = result.name + " " + result.score + "/5";
             leaderboardList.appendChild(entry);
         });
 
@@ -75,7 +75,7 @@ function showScores() {
             // Als de speler een rang heeft en deze hoger is dan 5, toon de rang en score van de speler
             if (latestName && latestScore !== null && latestRank > 5) {
                 playerRank.textContent = "Your place: " + latestRank + ". " +
-                    latestName + " " + latestScore + "/20.";
+                    latestName + " " + latestScore + "/5.";
                 playerRank.hidden = false;
             }
         }
@@ -85,6 +85,7 @@ function showScores() {
 if (resetLeaderboardButton) {
     resetLeaderboardButton.addEventListener("click", function() {
         quizIds.forEach(function(quizId) {
+            // je begint op plek 0 en verwijdert alle opgeslagen scores totdat je de opgeslagen scorecount hebt bereikt
             let plek = 0;
             const savedCount = Number(localStorage.getItem(quizId + "LeaderboardCount")) || 5;
             while (plek < savedCount) {
@@ -131,11 +132,13 @@ if (leaderboardForm) {
         scores.sort(function(a, b) {
             return b.score - a.score;
         });
+        // Sla de bijgewerkte scores op in localStorage, inclusief de rang en score van de speler
         localStorage.setItem(quizId + "LeaderboardCount", scores.length);
         localStorage.setItem(quizId + "LatestLeaderboardRank", scores.indexOf(newScore) + 1);
         localStorage.setItem(quizId + "LatestLeaderboardName", naam);
         localStorage.setItem(quizId + "LatestLeaderboardScore", score);
         let opslagPlek = 0;
+        // slaat de scores op in localStorage totdat alle scores zijn opgeslagen
         while (opslagPlek < scores.length) {
             localStorage.setItem(quizId + "LeaderboardName" + opslagPlek, scores[opslagPlek].name);
             localStorage.setItem(quizId + "LeaderboardScore" + opslagPlek, scores[opslagPlek].score);
