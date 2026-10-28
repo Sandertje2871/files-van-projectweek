@@ -3,11 +3,12 @@ const leaderboardForm = document.querySelector("#leaderboard-form");
 const leaderboardStatus = document.querySelector("#leaderboard-status");
 const resetLeaderboardButton = document.querySelector("#reset-leaderboard");
 const quizIds = ["quiz1", "quiz2"];
+const maxLeaderboardEntries = 20;
 // Functie om de scores op te halen uit localStorage voor een specifieke quiz
 function getScores(quizId) {
     let scores = [];
     const savedCount = localStorage.getItem(quizId + "LeaderboardCount");
-    // Als er een opgeslagen scorecount is, gebruik deze om de scores op te halen, anders gebruik een standaardwaarde van 5
+    // Als er geen opgeslagen scorecount is, controleer de maximale leaderboardgrootte
     if (savedCount !== null) {
         let plek = 0;
         while (plek < Number(savedCount)) {
@@ -20,10 +21,10 @@ function getScores(quizId) {
             }
             plek++;
         }
-        // Als er geen opgeslagen scorecount is, gebruik een standaardwaarde van 5 om de scores op te halen
+        // Als er geen opgeslagen scorecount is, gebruik de maximale leaderboardgrootte
     } else {
         let plek = 0;
-        while (plek < 5) {
+        while (plek < maxLeaderboardEntries) {
             const name = localStorage.getItem(quizId + "LeaderboardName" + plek);
             const scoreText = localStorage.getItem(quizId + "LeaderboardScore" + plek);
             const score = Number(scoreText);
@@ -52,11 +53,11 @@ function showScores() {
         // Maak de lijst leeg voordat je de scores weergeeft
         leaderboardList.textContent = "";
         const scores = getScores(quizId);
-        // Voeg de top 5 scores toe aan de leaderboard-lijst
-        scores.slice(0, 5).forEach(function(result, index) {
+        // Voeg de top 20 scores toe aan de leaderboard-lijst
+        scores.slice(0, maxLeaderboardEntries).forEach(function(result, index) {
             const entry = document.createElement("li");
             entry.value = index + 1;
-            entry.textContent = result.name + " " + result.score + "/5";
+            entry.textContent = result.name + " " + result.score + "/20";
             leaderboardList.appendChild(entry);
         });
 
@@ -72,10 +73,10 @@ function showScores() {
             const latestName = localStorage.getItem(quizId + "LatestLeaderboardName");
             const latestScore = localStorage.getItem(quizId + "LatestLeaderboardScore");
             playerRank.hidden = true;
-            // Als de speler een rang heeft en deze hoger is dan 5, toon de rang en score van de speler
-            if (latestName && latestScore !== null && latestRank > 5) {
+            // Als de speler buiten de getoonde top 20 staat, toon de rang en score van de speler
+            if (latestName && latestScore !== null && latestRank > maxLeaderboardEntries) {
                 playerRank.textContent = "Your place: " + latestRank + ". " +
-                    latestName + " " + latestScore + "/5.";
+                    latestName + " " + latestScore + "/20.";
                 playerRank.hidden = false;
             }
         }
@@ -87,7 +88,7 @@ if (resetLeaderboardButton) {
         quizIds.forEach(function(quizId) {
             // je begint op plek 0 en verwijdert alle opgeslagen scores totdat je de opgeslagen scorecount hebt bereikt
             let plek = 0;
-            const savedCount = Number(localStorage.getItem(quizId + "LeaderboardCount")) || 5;
+            const savedCount = Number(localStorage.getItem(quizId + "LeaderboardCount")) || maxLeaderboardEntries;
             while (plek < savedCount) {
                 localStorage.removeItem(quizId + "LeaderboardName" + plek);
                 localStorage.removeItem(quizId + "LeaderboardScore" + plek);
@@ -132,16 +133,23 @@ if (leaderboardForm) {
         scores.sort(function(a, b) {
             return b.score - a.score;
         });
-        // Sla de bijgewerkte scores op in localStorage, inclusief de rang en score van de speler
-        localStorage.setItem(quizId + "LeaderboardCount", scores.length);
+        // Sla maximaal 20 scores op, met behoud van de rang van de nieuwe score
         localStorage.setItem(quizId + "LatestLeaderboardRank", scores.indexOf(newScore) + 1);
         localStorage.setItem(quizId + "LatestLeaderboardName", naam);
         localStorage.setItem(quizId + "LatestLeaderboardScore", score);
+        const oldCount = Number(localStorage.getItem(quizId + "LeaderboardCount")) || 0;
+        const savedScores = scores.slice(0, maxLeaderboardEntries);
+        localStorage.setItem(quizId + "LeaderboardCount", savedScores.length);
         let opslagPlek = 0;
-        // slaat de scores op in localStorage totdat alle scores zijn opgeslagen
-        while (opslagPlek < scores.length) {
-            localStorage.setItem(quizId + "LeaderboardName" + opslagPlek, scores[opslagPlek].name);
-            localStorage.setItem(quizId + "LeaderboardScore" + opslagPlek, scores[opslagPlek].score);
+        // Sla de scores op totdat de maximale leaderboardgrootte is bereikt
+        while (opslagPlek < savedScores.length) {
+            localStorage.setItem(quizId + "LeaderboardName" + opslagPlek, savedScores[opslagPlek].name);
+            localStorage.setItem(quizId + "LeaderboardScore" + opslagPlek, savedScores[opslagPlek].score);
+            opslagPlek++;
+        }
+        while (opslagPlek < oldCount) {
+            localStorage.removeItem(quizId + "LeaderboardName" + opslagPlek);
+            localStorage.removeItem(quizId + "LeaderboardScore" + opslagPlek);
             opslagPlek++;
         }
         // Verwijder de tijdelijke scoregegevens uit localStorage en verberg het leaderboardformulier, toon een statusbericht en werk de weergegeven scores bij
