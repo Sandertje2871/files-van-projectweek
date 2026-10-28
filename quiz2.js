@@ -11,7 +11,7 @@ const correctAnswers = [
 "Turkish",
 "German",
 "French",
-"English",
+"Swahili",
 "Thai",
 "Bengali",
 "Japanese",
@@ -23,8 +23,17 @@ const correctAnswers = [
 "Swedish",
 "Filipino"
 ]
-
 // Variabelen voor score, huidige vraag en spelstatus
+const questionOrder = Array.from(questions, function(question, index) {
+    return { question: question, correctAnswer: correctAnswers[index] };
+});
+// Schud de volgorde van de vragen willekeurig
+for (let i = questionOrder.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [questionOrder[i], questionOrder[randomIndex]] = [questionOrder[randomIndex], questionOrder[i]];
+}
+
+// Variabelen voor score, huidige vraag en spelstatus   
 let score = 0;
 let currentQuestion = 0;
 let gameFinished = false;
@@ -56,6 +65,8 @@ const countdown = setInterval(function() {
 }, 1000);
 
 questions[currentQuestion].classList.add("active");
+
+
 
 // Voeg event listeners toe aan elke antwoordknop
 questions.forEach(function(question, index) {
