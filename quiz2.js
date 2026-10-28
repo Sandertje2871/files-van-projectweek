@@ -90,7 +90,7 @@ questions.forEach(function(question, index) {
                     finishGame();
                 }
  
-            }, 100);
+            }, 500);
         });
     });
 });
