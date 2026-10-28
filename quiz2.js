@@ -1,44 +1,40 @@
-const questions = document.querySelectorAll(".question");
+const questions = Array.from(document.querySelectorAll(".question"));
 
-// goede antwoorden voor de geluidvragen
 const correctAnswers = [
-"Spanish",
-"Polish",
-"Arabic",
-"Urdu",
-"Lithuanian",
-"Chinese",
-"Turkish",
-"German",
-"French",
-"Swahili",
-"Thai",
-"Bengali",
-"Japanese",
-"Italian",
-"Russian",
-"Czech",
-"Portuguese",
-"Indonesian",
-"Swedish",
-"Filipino"
-]
-// Variabelen voor score, huidige vraag en spelstatus
-const questionOrder = Array.from(questions, function(question, index) {
+    "Spanish",
+    "Polish",
+    "Arabic",
+    "Urdu",
+    "Lithuanian",
+    "Chinese",
+    "Turkish",
+    "German",
+    "French",
+    "Swahili",
+    "Thai",
+    "Bengali",
+    "Japanese",
+    "Italian",
+    "Russian",
+    "Czech",
+    "Portuguese",
+    "Indonesian",
+    "Swedish",
+    "Filipino"
+];
+
+const questionOrder = questions.map(function(question, index) {
     return { question: question, correctAnswer: correctAnswers[index] };
 });
-// Schud de volgorde van de vragen willekeurig
 for (let i = questionOrder.length - 1; i > 0; i--) {
     const randomIndex = Math.floor(Math.random() * (i + 1));
     [questionOrder[i], questionOrder[randomIndex]] = [questionOrder[randomIndex], questionOrder[i]];
 }
 
-// Variabelen voor score, huidige vraag en spelstatus   
 let score = 0;
 let currentQuestion = 0;
 let gameFinished = false;
 
-// functie om het spel te beëindigen en door te verwijzen naar het eindscherm
 function finishGame() {
     if (gameFinished) {
         return;
@@ -51,7 +47,6 @@ function finishGame() {
     localStorage.setItem("scoreForLeaderboardQuiz", "quiz2");
     window.location.href = "eindscherm.html";
 }
-// timer instellen en zorgen dat het na 240 seconden het spel beëindigt
 
 const timerDisplay = document.querySelector("#timer");
 const deadline = Date.now() + 240 * 1000;
@@ -64,43 +59,46 @@ const countdown = setInterval(function() {
     }
 }, 1000);
 
-questions[currentQuestion].classList.add("active");
+if (questionOrder.length > 0) {
+    questionOrder[currentQuestion].question.classList.add("active");
+}
 
+questionOrder.forEach(function(item) {
+    const question = item.question;
+    const choices = question.querySelector(".choices");
+    const buttons = Array.from(question.querySelectorAll("button"));
 
+    for (let i = buttons.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        [buttons[i], buttons[randomIndex]] = [buttons[randomIndex], buttons[i]];
+    }
 
-// Voeg event listeners toe aan elke antwoordknop
-questions.forEach(function(question, index) {
-    const buttons = question.querySelectorAll("button");
- 
     buttons.forEach(function(button) {
-        button.addEventListener("click", function() {
-            const selectedAnswer = button.textContent.trim();
+        choices.appendChild(button);
 
+        button.addEventListener("click", function() {
             if (question.classList.contains("answered")) {
                 return;
             }
-            // Markeer de vraag als beantwoord
             question.classList.add("answered");
 
-            if (correctAnswers[index] === selectedAnswer) {
+            const selectedAnswer = button.textContent.trim();
+            if (item.correctAnswer === selectedAnswer) {
                 button.classList.add("correct");
                 score++;
+            } else {
+                button.classList.add("incorrect");
             }
-            else {
-                button.classList.add("incorrect")
-            }
-            
+
             setTimeout(function() {
                 question.classList.remove("active");
                 currentQuestion++;
- 
-                if (currentQuestion < questions.length) {
-                    questions[currentQuestion].classList.add("active");
-               
+
+                if (currentQuestion < questionOrder.length) {
+                    questionOrder[currentQuestion].question.classList.add("active");
                 } else {
                     finishGame();
                 }
- 
             }, 500);
         });
     });
